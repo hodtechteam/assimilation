@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CardController extends Controller
 {
@@ -13,6 +15,48 @@ class CardController extends Controller
 
     public function index()
     {
-        return view('cards');
+        return view('user.cards');
+    }
+
+    public function userHome()
+    {
+        return view('user.home');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:cards|max:255',
+            'address' => 'required|string|max:255',
+            'age' => 'required|string|max:255',
+            'source' => 'required|string|max:255',
+            'born_again' => 'required|numeric',
+            'member' => 'required|numeric',
+            'visitation' => 'required|numeric',
+            'program' => 'required|string',
+            'phone' => 'required|numeric|unique:cards|digits:11',
+        ]);
+
+        $card = Card::create($request->all());
+        $card->save();
+        return back()->with('success', 'Card inputed successfully'); 
+    }
+
+    public function cardList()
+    {
+        $user = Auth::user();
+
+        $cards = $user->myCards()->get();
+
+        return view('user.cardlist', ['cards' => $cards]);
+    }
+
+    public function updateCard(Request $request)
+    {
+        $card = Card::where('id', $request->card_id)->first();
+        $card->comment = $request->comment;
+        $card->save();
+         return back()->with('success', 'Card Updated Successfully');
     }
 }

@@ -49,4 +49,9 @@ class User extends Authenticatable
         }
         return $this->role == $role;
     }
+
+    public function myCards()
+    {
+        return $this->hasMany(Card::class, 'user_id');
+    }
 }

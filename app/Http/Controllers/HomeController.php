@@ -25,8 +25,8 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         if($user->hasRole('user')){
-            return redirect('cards');
+            return redirect('user');
         }
-        return view('home');
+        return view('admin.home');
     }
 }

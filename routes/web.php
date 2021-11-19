@@ -24,4 +24,8 @@ Route::get('auth/google/callback', [App\Http\Controllers\GoogleSocialiteControll
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/user', [App\Http\Controllers\CardController::class, 'userHome']);
 Route::get('cards', [App\Http\Controllers\CardController::class, 'index']);
+Route::post('store/card', [App\Http\Controllers\CardController::class, 'store']);
+Route::get('card/list', [App\Http\Controllers\CardController::class, 'cardList']);
+Route::post('update/card', [App\Http\Controllers\CardController::class, 'updateCard']);
