@@ -115,13 +115,13 @@
         <div class="bg-header-dark">
           <div class="content-header bg-white-5">
             <!-- Logo -->
-            <a class="fw-semibold text-white tracking-wide" href="index.html">
+            <a class="fw-semibold text-white tracking-wide" href="{{ url('home') }}">
               <span class="smini-visible">
                 D<span class="opacity-75">x</span>
               </span>
               <span class="smini-hidden">
-                Dash<span class="opacity-75">mix</span>
-                <span class="fw-normal">Dark</span>
+                Assimilation
+                <span class="fw-normal">Min.</span>
               </span>
             </a>
             <!-- END Logo -->
@@ -159,13 +159,6 @@
               <i class="fa fa-fw fa-bars"></i>
             </button>
             <!-- END Toggle Sidebar -->
-
-            <!-- Open Search Section -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-alt-secondary" data-toggle="layout" data-action="header_search_on">
-              <i class="fa fa-fw opacity-50 fa-search"></i> <span class="ms-1 d-none d-sm-inline-block">Search</span>
-            </button>
-            <!-- END Open Search Section -->
           </div>
           <!-- END Left Section -->
 
@@ -186,13 +179,7 @@
                   <a class="dropdown-item" href="be_pages_generic_profile.html">
                     <i class="far fa-fw fa-user me-1"></i> Profile
                   </a>
-                  <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
-                    <span><i class="far fa-fw fa-envelope me-1"></i> Inbox</span>
-                    <span class="badge bg-primary rounded-pill">3</span>
-                  </a>
-                  <a class="dropdown-item" href="be_pages_generic_invoice.html">
-                    <i class="far fa-fw fa-file-alt me-1"></i> Invoices
-                  </a>
+                  
                   <div role="separator" class="dropdown-divider"></div>
 
                   <!-- Toggle Side Overlay -->

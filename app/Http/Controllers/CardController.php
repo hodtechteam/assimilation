@@ -20,7 +20,8 @@ class CardController extends Controller
 
     public function userHome()
     {
-        return view('user.home');
+        $guest = auth()->user()->myCards()->orderBy('created_at', 'desc')->take('10')->get();
+        return view('user.home', ['guests' => $guest]);
     }
 
     public function store(Request $request)

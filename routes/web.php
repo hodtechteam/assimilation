@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
 Route::get('auth/google', [App\Http\Controllers\GoogleSocialiteController::class, 'redirectToGoogle']);
@@ -29,3 +29,10 @@ Route::get('cards', [App\Http\Controllers\CardController::class, 'index']);
 Route::post('store/card', [App\Http\Controllers\CardController::class, 'store']);
 Route::get('card/list', [App\Http\Controllers\CardController::class, 'cardList']);
 Route::post('update/card', [App\Http\Controllers\CardController::class, 'updateCard']);
+
+Route::get('all/cards', [App\Http\Controllers\AdminController::class, 'allCards']);
+Route::get('contacted/cards', [App\Http\Controllers\AdminController::class, 'contactedCards']);
+Route::get('visited/cards', [App\Http\Controllers\AdminController::class, 'visitedCards']);
+Route::get('users/list', [App\Http\Controllers\AdminController::class, 'userList']);
+
+

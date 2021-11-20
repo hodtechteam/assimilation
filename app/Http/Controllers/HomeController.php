@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +29,8 @@ class HomeController extends Controller
         if($user->hasRole('user')){
             return redirect('user');
         }
-        return view('admin.home');
+        $users = User::where('role', 'user')->get();
+        $guests = Card::all();
+        return view('admin.home', ['users' => $user, 'guests' => $guests]);
     }
 }
