@@ -75,7 +75,8 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Home Address</label>
-                                                        <input type="text" class="form-control @error('address') is-invalid @enderror" id="validationCustom02" parsley-type="email" placeholder="Address" name="address" value="{{ old('address') }}" required>
+                                                        <textarea class="form-control @error('address') is-invalid @enderror" name="address" required>{{ old('address') }}</textarea> 
+                                                        
                                                         @error('address')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -89,6 +90,12 @@
                                                         <select name="age" class="form-control @error('age') is-invalid @enderror" required>
                                                             <option value="">Select One</option>
                                                             <option value="less than 18">Less than 18 years</option>
+                                                            <option value="18 to 25">18 to 25 years</option>
+                                                            <option value="25 to 30">25 to 30 years</option>
+                                                            <option value="30 to 40">30 to 40 years</option>
+                                                            <option value="40 to 50">40 to 50 years</option>
+                                                            <option value="50 to 60">50 to 60 years</option>
+                                                            <option value="60 and above">60 and above</option>
                                                         </select>
                                                         @error('age')
                                                             <span class="invalid-feedback" role="alert">
@@ -100,10 +107,11 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">How did you hear about HOD</label>
-                                                        <select name="source" class="form-control @error('source') is-invalid @enderror" required>
+                                                        <select name="source" id="how_u_know_hod" class="form-control @error('source') is-invalid @enderror" required>
                                                             <option value="">Select One</option>
                                                             <option value="Friends and Family">Friends and Family</option>
                                                             <option value="Social Media">Social Media</option>
+                                                            <option value="1">Other</option>
                                                             
                                                         </select>
                                                         @error('source')
@@ -111,7 +119,15 @@
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                         @enderror
+
+                                                        <div id="hidden_div_how" style="display: none;">
+                                                            
+                                                        <label class="form-label" for="validationCustom02">Enter Other Information</label>
+                                                            <textarea class="form-control" name="source_other"></textarea>
+                                                        </div>
+                                        
                                                     </div>
+
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
@@ -173,7 +189,8 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                            </div>      
+                                            </div>   
+
                                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">             
                                             <div class="col-md-6">
                                                 <div class="mb-3">
@@ -193,4 +210,15 @@
         </div>
     </div>
                 
+@endsection
+
+
+@section('script')
+<script type="text/javascript">
+document.getElementById('how_u_know_hod').addEventListener('change', function () {
+    var style = this.value == 1 ? 'block' : 'none';
+    document.getElementById('hidden_div_how').style.display = style;
+});
+</script>
+
 @endsection

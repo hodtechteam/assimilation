@@ -48,7 +48,7 @@ class CardController extends Controller
     {
         $user = Auth::user();
 
-        $cards = $user->myCards()->get();
+        $cards = $user->myCards()->orderBy('created_at', 'desc')->get();
 
         return view('user.cardlist', ['cards' => $cards]);
     }
@@ -59,5 +59,14 @@ class CardController extends Controller
         $card->comment = $request->comment;
         $card->save();
          return back()->with('success', 'Card Updated Successfully');
+    }
+
+    public function haveVisited($id)
+    {
+        $haveVisited = Card::where('id', $id)->first();
+        $haveVisited->is_visited = true;
+        $haveVisited->save();
+        return back()->with('success', 'Card Updated Successfully');
+
     }
 }

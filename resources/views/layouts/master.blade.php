@@ -259,12 +259,9 @@
     </div>
     <!-- END Page Container -->
 
-    <!--
-      Dashmix JS
+    @yield('script')
 
-      Core libraries and functionality
-      webpack is putting everything together at assets/_js/main/app.js
-    -->
+    
     <script src="{{ asset('assets/js/dashmix.app.min.js') }}"></script>
 
     <!-- Page JS Plugins -->
