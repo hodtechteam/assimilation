@@ -88,11 +88,11 @@
                               <h5 class="fs-base mb-1">Will you like to be visited</h5>
                               <small>{{ $card->visitation == '1'?'YES':'NO' }}</small>
                             </a> --}}
-                            <hr>
+                            {{-- <hr>
                             <a class="list-group-item list-group-item-action" href="javascript:void(0)">
                               <h5 class="fs-base mb-1">Report</h5>
                               <small>{{ $card->comment == ''?'No Report Yet':$card->comment }}</small>
-                            </a>
+                            </a> --}}
                           </div>
                         </div>
                         <div class="block-content">
@@ -121,8 +121,7 @@
                           <button type="submit" class="btn btn-sm btn-alt-secondary">Update </button>
                         </form>
                         @else
-
-                            <div class="alert alert-info">Report Recorded!</div>
+                            <div class="alert alert-info btn-sm alert-sm">Report Recorded!</div>
                         @endif
 
                         </div>
