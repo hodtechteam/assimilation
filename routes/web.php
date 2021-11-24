@@ -30,6 +30,8 @@ Route::post('store/card', [App\Http\Controllers\CardController::class, 'store'])
 Route::get('card/list', [App\Http\Controllers\CardController::class, 'cardList']);
 Route::post('update/card', [App\Http\Controllers\CardController::class, 'updateCard']);
 Route::get('have/visited/{id}', [App\Http\Controllers\CardController::class, 'haveVisited']);
+Route::post('update/card', [App\Http\Controllers\CardController::class, 'update']);
+Route::get('edit/card/{id}', [App\Http\Controllers\CardController::class, 'editCard']);
 
 Route::get('all/cards', [App\Http\Controllers\AdminController::class, 'allCards']);
 Route::get('contacted/cards', [App\Http\Controllers\AdminController::class, 'contactedCards']);

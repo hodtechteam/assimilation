@@ -114,10 +114,10 @@
                           @if($card->comment == '')
                           <form action="{{ url('update/card')}}" method="POST">
                             @csrf
-                          <div class="d-flex justify-content-between push">
-                            <textarea name="comment" class="form-control" required></textarea>
-                          </div>
-                          <input type="hidden" name="card_id" value="{{  $card->id }}">
+                            <div class="d-flex justify-content-between push">
+                              <textarea name="comment" class="form-control" required></textarea>
+                            </div>
+                            <input type="hidden" name="card_id" value="{{  $card->id }}">
                           <button type="submit" class="btn btn-sm btn-alt-secondary">Update </button>
                         </form>
                         @else
@@ -126,12 +126,13 @@
 
                         </div>
                         <br>
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-block-vcenter_{{ $card->id }}">View All Information</button>
                       </div>
                     </div>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-block-vcenter_{{ $card->id }}">View All Information</button>
+                        <a href="{{ url('edit/card/'.$card->id) }}" class="btn btn-info btn-sm">Edit Information</a>
+                        <br><br>
                   </div>
                 </div>
-
 
 
                 <div class="modal" id="modal-block-vcenter_{{ $card->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-block-vcenter" aria-hidden="true">
