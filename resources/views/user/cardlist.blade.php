@@ -112,7 +112,7 @@
                           </div>
                           
                           @if($card->comment == '')
-                          <form action="{{ url('update/card')}}" method="POST">
+                          <form action="{{ url('update/card/comment')}}" method="POST">
                             @csrf
                             <div class="d-flex justify-content-between push">
                               <textarea name="comment" class="form-control" required></textarea>

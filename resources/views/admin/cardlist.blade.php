@@ -163,19 +163,25 @@
 
                                         <div class="block-content bg-body-light">
                                           <div class="d-flex justify-content-between push">
-                                            <a class="btn btn-sm btn-alt-secondary" href="javascript:void(0)">
-                                              <i class="fa fa-fw fa-pencil-alt opacity-50 me-1"></i> I have Visited
-                                            </a>
+                                             @if ($card->is_visited == false)
+                                                <a class="btn btn-sm btn-alt-secondary" href="{{ url('have/visited/'.$card->id) }}">
+                                                    <i class="fa fa-fw fa-pencil-alt opacity-50 me-1"></i> I have Visited
+                                                </a>
+                                              @else
+                                                <a class="btn btn-sm btn-alt-success" href="{{ url('have/visied/'.$card->id) }}">
+                                                    <i class="fa fa-fw fa-pencil-alt opacity-50 me-1"></i> Gues has been visited
+                                                </a>
+                                              @endif
                                           </div>
                                           
-                                          <form action="{{ url('update/card')}}" method="POST">
+                                          {{-- <form action="{{ url('update/card/comment')}}" method="POST">
                                             @csrf
                                           <div class="d-flex justify-content-between push">
                                             <textarea name="comment" class="form-control" required></textarea>
                                           </div>
                                           <input type="hidden" name="card_id" value="{{  $card->id }}">
                                           <button type="submit" class="btn btn-sm btn-alt-secondary">Update </button>
-                                        </form>
+                                        </form> --}}
 
                                         </div>
 

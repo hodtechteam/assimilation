@@ -72,7 +72,7 @@ class CardController extends Controller
         return view('user.cardlist', ['cards' => $cards]);
     }
 
-    public function updateCard(Request $request)
+    public function updateCardComment(Request $request)
     {
         $card = Card::where('id', $request->card_id)->first();
         $card->comment = $request->comment;
