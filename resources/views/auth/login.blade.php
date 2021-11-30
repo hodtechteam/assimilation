@@ -183,10 +183,6 @@
                       </div>
                     </div>
                     <div class="d-sm-flex justify-content-sm-between align-items-sm-center text-center text-sm-start mb-4">
-                      {{-- <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="login-remember-me" name="login-remember-me" checked>
-                        <label class="form-check-label" for="login-remember-me">Remember Me</label>
-                      </div> --}}
                       <div class="fw-semibold fs-sm py-1">
                         <a href="{{ url('register') }}">Not yet a Member, Register</a>
                       </div>
@@ -195,6 +191,13 @@
                       <button type="submit" class="btn btn-hero btn-primary">
                         <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> Sign In
                       </button>
+                     <hr>
+                      <a href="{{ url('auth/google') }}" class="btn btn-hero btn-info">
+                        {{-- <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> --}}
+                        <img src="https://img.icons8.com/color/20/000000/google-logo.png"/> Google Sign In
+                      </a>
+                      
+                      {{-- <a href="{{ url('auth/google') }}">Google lOGIN</a> --}}
                     </div>
                   </form>
                   <!-- END Sign In Form -->

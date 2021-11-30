@@ -22,42 +22,43 @@ class GoogleSocialiteController extends Controller
 
     public function handleGoogleCallback()
     {
+
         try {
+             $user = Socialite::driver('google')->stateless()->user();
 
-            
-            return $user = Socialite::driver('google')->user();
-            
-            //incase the email already exist...we just update the google_id and avarta
-            // $googleUser = User::where('email', $user->email)->first();
-            // if($googleUser){
-            //     $googleUser->google_id = $user->id;
-            //     $googleUser->avatar = $user->avatar;
-            //     $googleUser->save();
-            //     Auth::login($googleUser);
-            //     return redirect('/home');
-            // }
+              //incase the email already exist...we just update the google_id and avataR
+            $googleUser = User::where('email', $user->email)->first();
+            if($googleUser){
+                $googleUser->google_id = $user->id;
+                $googleUser->avatar = $user->avatar;
+                $googleUser->save();
+                Auth::login($googleUser);
+                return redirect('/home');
+            }
 
-            // $finduser = User::where('google_id', $user->id)->first();
+            $finduser = User::where('google_id', $user->id)->first();
 
-            // if($finduser){
-            //     Auth::login($finduser);
-            //     return redirect('/home');
-            // }else{
-            //     $password = Str::random(16);
-            //     $newUser = User::create([
-            //         'name' => $user->name,
-            //         'email' => $user->email,
-            //         'google_id'=> $user->id,
-            //         'avatar'=> $user->avatar,
-            //         'password' => Hash::make($password),//encrypt('123456dummy')
-            //     ]);
-            //     Auth::login($newUser);
-            //     return redirect('/home');
-            // }
+            if($finduser){
+                Auth::login($finduser);
+                return redirect('/home');
+            }else{
+                $password = Str::random(16);
+                $newUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'google_id'=> $user->id,
+                    'avatar'=> $user->avatar,
+                    'password' => Hash::make($password),
+                ]);
+                Auth::login($newUser);
+                return redirect('/home');
+            }
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             dd($e->getMessage());
+            //return redirect('/login');
         }
+
     }
 
 }

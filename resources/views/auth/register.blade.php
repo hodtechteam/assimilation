@@ -106,6 +106,12 @@
                       <button type="submit" class="btn btn-hero btn-primary">
                         <i class="fa fa-fw fa-plus opacity-50 me-1"></i> Sign Up
                       </button>
+                      <hr>
+                      <a href="{{ url('auth/google') }}" class="btn btn-hero btn-info">
+                        {{-- <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> --}}
+                        <img src="https://img.icons8.com/color/20/000000/google-logo.png"/> Google Sign Up
+                      </a>
+                     
                     </div>
                   </form>
                   <!-- END Sign Up Form -->
