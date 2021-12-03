@@ -33,7 +33,7 @@ class CardController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:cards|max:255',
+            'email' => 'required|email|max:255',
             'address' => 'required|string|max:255',
             'age' => 'required|string|max:255',
             'source' => 'required|string|max:255',
@@ -41,7 +41,7 @@ class CardController extends Controller
             'member' => 'required|numeric',
             'visitation' => 'required|numeric',
             'program' => 'required|string',
-            'phone' => 'required|numeric|unique:cards|digits:11',
+            'phone' => 'required|numeric|digits:11',
         ]);
 
 
