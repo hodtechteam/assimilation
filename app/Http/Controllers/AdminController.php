@@ -36,4 +36,11 @@ class AdminController extends Controller
         $users = User::where('role', 'user')->get();
         return view('admin.user_list', ['users' => $users]);
     }
+
+    public function userInfo($id)
+    {
+        $user = User::find($id);
+        $cards = $user->myCards()->orderBy('created_at', 'desc')->get();
+        return view('admin.view_user_activity', ['user' => $user, 'cards' => $cards]);
+    }
 }

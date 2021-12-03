@@ -33,9 +33,11 @@ Route::get('have/visited/{id}', [App\Http\Controllers\CardController::class, 'ha
 Route::post('update/card', [App\Http\Controllers\CardController::class, 'update']);
 Route::get('edit/card/{id}', [App\Http\Controllers\CardController::class, 'editCard']);
 
+//Admin Routes
 Route::get('all/cards', [App\Http\Controllers\AdminController::class, 'allCards']);
 Route::get('contacted/cards', [App\Http\Controllers\AdminController::class, 'contactedCards']);
 Route::get('visited/cards', [App\Http\Controllers\AdminController::class, 'visitedCards']);
 Route::get('users/list', [App\Http\Controllers\AdminController::class, 'userList']);
+Route::get('user/info/{id}', [App\Http\Controllers\AdminController::class, 'userInfo']);
 
 

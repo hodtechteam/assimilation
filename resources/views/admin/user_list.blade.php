@@ -39,8 +39,11 @@
                   <tr>
                     <th style="width: 30%;">Name</th>
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Email</th>
-                    <th style="width: 10%;">Number of Guest</th>
+                    <th style="width: 5%;">No. of Guest</th>
+                    <th style="width: 5%;">No. of Contacted</th>
+                    <th style="width: 5%;">No. of Visited</th>
                     <th style="width: 20%;">When Registered</th>
+                    {{-- <th style="width: 20%;">Action</th> --}}
                   </tr>
                 </thead>
                 <tbody>
@@ -56,9 +59,18 @@
                             <td class="d-none d-sm-table-cell">
                             <em class="text-muted">{{ $card->mycards->count() }}</em>
                             </td>
+                            <td class="d-none d-sm-table-cell">
+                            <em class="text-muted">{{ $card->mycards->where('comment', '!=', null)->count() }}</em>
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                            <em class="text-muted">{{ $card->mycards->where('is_visited', true)->count() }}</em>
+                            </td>
                             <td>
                             <em class="text-muted">{{ \Carbon\Carbon::parse($card->created_at)->format('d/m/Y') }}</em>
                             </td>
+                            {{-- <td>
+                              <a href="{{ url('user/info/'.$card->id) }}" class="btn btn-primary btn-sm">View Info.</a>
+                            </td> --}}
                             
                         </tr>
 
