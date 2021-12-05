@@ -137,12 +137,8 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Are you Born Again</label>
-                                                        <select name="born_again" class="form-control @error('born_again') is-invalid @enderror" required>
-                                                            <option value="{{ $card->born_again }}">{{ $card->born_again == 1 ? 'Yes' : 'No' }}</option>
-                                                            <optgroup>-----------</optgroup>
-                                                            <option value="1">Yes</option>
-                                                            <option value="0">No</option>
-                                                        </select>
+                                                        <input type="text" class="form-control @error('born_again') is-invalid @enderror" id="validationCustom02" placeholder="Phone Number" name="born_again" value="{{ $card->born_again }}" required>
+                                                        
                                                         @error('born_again')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -153,12 +149,8 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Would you Love to be a member of HOD</label>
-                                                        <select name="member" class="form-control @error('member') is-invalid @enderror" required>
-                                                            <option value="{{ $card->member }}">{{ $card->member == 1 ? 'Yes' : 'No' }}</option>
-                                                            <optgroup>-----------</optgroup>
-                                                            <option value="1">Yes</option>
-                                                            <option value="0">No</option>
-                                                        </select>
+                                                        <input type="text" class="form-control @error('member') is-invalid @enderror" id="validationCustom02" placeholder="Phone Number" name="member" value="{{ $card->member }}" required>
+                                                        
                                                         @error('member')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -169,12 +161,8 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Would you Love to be visited</label>
-                                                        <select name="visitation" class="form-control @error('visitation') is-invalid @enderror" required>
-                                                            <option value="{{ $card->visitation }}">{{ $card->visitation == 1 ? 'Yes' : 'No' }}</option>
-                                                            <optgroup>-----------</optgroup>
-                                                            <option value="1">Yes</option>
-                                                            <option value="0">No</option>
-                                                        </select>
+                                                        <input type="text" class="form-control @error('visitation') is-invalid @enderror" name="visitation" value="{{ $card->visitation }}" required>
+                                                        
                                                         @error('visitation')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>

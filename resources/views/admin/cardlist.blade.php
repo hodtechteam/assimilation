@@ -140,17 +140,17 @@
 
                                             <a class="list-group-item list-group-item-action" href="javascript:void(0)">
                                               <h5 class="fs-base mb-1">Are you Born Again</h5>
-                                              <small>{{ $card->born_again == '1'?'YES':'NO' }}</small>
+                                              <small>{{ $card->born_again }}</small>
                                             </a>
 
                                             <a class="list-group-item list-group-item-action" href="javascript:void(0)">
                                               <h5 class="fs-base mb-1">Will you like to be a Member of H.O.D</h5>
-                                              <small>{{ $card->member == '1'?'YES':'NO' }}</small>
+                                              <small>{{ $card->member }}</small>
                                             </a>
 
                                             <a class="list-group-item list-group-item-action" href="javascript:void(0)">
                                               <h5 class="fs-base mb-1">Will you like to be visited</h5>
-                                              <small>{{ $card->visitation == '1'?'YES':'NO' }}</small>
+                                              <small>{{ $card->visitation }}</small>
                                             </a>
                                             <hr>
                                             <a class="list-group-item list-group-item-action" href="javascript:void(0)">
@@ -169,7 +169,7 @@
                                                 </a>
                                               @else
                                                 <a class="btn btn-sm btn-alt-success" href="{{ url('have/visied/'.$card->id) }}">
-                                                    <i class="fa fa-fw fa-pencil-alt opacity-50 me-1"></i> Gues has been visited
+                                                    <i class="fa fa-fw fa-pencil-alt opacity-50 me-1"></i> Guest has been visited
                                                 </a>
                                               @endif
                                           </div>

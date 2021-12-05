@@ -88,6 +88,17 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Age Bracket</label>
                                                         <select name="age" class="form-control @error('age') is-invalid @enderror" required>
+                                                            @if(old('age'))
+                                                            <option selected value="{{ old('age') }}">{{ old('age') }}</option>
+                                                            <option @if(old('age') == "Less than 18 years") hidden @endif value="less than 18">Less than 18 years</option>
+                                                            <option @if(old('age') == "18 to 25 years") hidden @endif value="18 to 25 years">18 to 25 years</option>
+                                                            <option @if(old('age') == "25 to 30 years") hidden @endif value="25 to 30 years">25 to 30 years</option>
+                                                            <option @if(old('age') == "30 to 40 years") hidden @endif value="30 to 40 years">30 to 40 years</option>
+                                                            <option @if(old('age') == "40 to 50 years") hidden @endif value="40 to 50 years">40 to 50 years</option>
+                                                            <option @if(old('age') == "50 to 60 years") hidden @endif value="50 to 60 years">50 to 60 years</option>
+                                                            <option @if(old('age') == "60 and above") hidden @endif value="60 and above">60 and above</option>
+                                                            
+                                                            @else
                                                             <option value="">Select One</option>
                                                             <option value="less than 18">Less than 18 years</option>
                                                             <option value="18 to 25">18 to 25 years</option>
@@ -96,6 +107,7 @@
                                                             <option value="40 to 50">40 to 50 years</option>
                                                             <option value="50 to 60">50 to 60 years</option>
                                                             <option value="60 and above">60 and above</option>
+                                                            @endif
                                                         </select>
                                                         @error('age')
                                                             <span class="invalid-feedback" role="alert">
@@ -108,11 +120,18 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">How did you hear about HOD</label>
                                                         <select name="source" id="how_u_know_hod" class="form-control @error('source') is-invalid @enderror" required>
+                                                           @if(old('source'))
+                                                            <option selected value="{{ old('source') }}">{{ old('source') }}</option>
+                                                            <option @if(old('source') == "Friends and Family") hidden @endif value="Friends and Family">Friends and Family</option>
+                                                            <option @if(old('source') == "Social Media") hidden @endif value="Social Media">Socila Media</option>
+                                                            <option @if(old('source') == "other") hidden @endif value="1">Other</option>
+                                                            
+                                                            @else
                                                             <option value="">Select One</option>
                                                             <option value="Friends and Family">Friends and Family</option>
                                                             <option value="Social Media">Social Media</option>
-                                                            <option value="1">Other</option>
-                                                            
+                                                            <option value="other">Other</option>
+                                                            @endif
                                                         </select>
                                                         @error('source')
                                                             <span class="invalid-feedback" role="alert">
@@ -132,11 +151,8 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Are you Born Again</label>
-                                                        <select name="born_again" class="form-control @error('born_again') is-invalid @enderror" required>
-                                                            <option value="">Select One</option>
-                                                            <option value="1">Yes</option>
-                                                            <option value="0">No</option>
-                                                        </select>
+                                                        <input type="text" class="form-control @error('born_again') is-invalid @enderror" name="born_again" required value="{{ old('born_again') }}"> 
+                                                        
                                                         @error('born_again')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -147,11 +163,13 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Would you Love to be a member of HOD</label>
-                                                        <select name="member" class="form-control @error('member') is-invalid @enderror" required>
+                                                        {{-- <select name="member" class="form-control @error('member') is-invalid @enderror" required>
                                                             <option value="">Select One</option>
                                                             <option value="1">Yes</option>
                                                             <option value="0">No</option>
-                                                        </select>
+                                                        </select> --}}
+                                                        <input type="text" class="form-control @error('member') is-invalid @enderror" name="member" required value="{{ old('member') }}"> 
+                                                        
                                                         @error('member')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -162,11 +180,8 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Would you Love to be visited</label>
-                                                        <select name="visitation" class="form-control @error('visitation') is-invalid @enderror" required>
-                                                            <option value="">Select One</option>
-                                                            <option value="1">Yes</option>
-                                                            <option value="0">No</option>
-                                                        </select>
+                                                        <input type="text" class="form-control @error('visitation') is-invalid @enderror" name="visitation" required value="{{ old('visitation') }}"> 
+                                                        
                                                         @error('visitation')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -178,9 +193,15 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Select Program</label>
                                                         <select name="program" class="form-control @error('program') is-invalid @enderror" required>
+                                                            @if(old('program'))
+                                                            <option selected value="{{ old('program') }}">{{ old('program') }}</option>
+                                                            <option @if(old('program') == "Sunday") hidden @endif value="Sunday">Sunday</option>
+                                                            <option @if(old('program') == "Wednesday") hidden @endif value="Wednesday">Wednesday</option>
+                                                            @else
                                                             <option value="">Select One</option>
                                                             <option value="Sunday">Sunday</option>
                                                             <option value="Wednesday">Wednesday</option>
+                                                            @endif
                                                         </select>
                                                         @error('program')
                                                             <span class="invalid-feedback" role="alert">
@@ -194,7 +215,7 @@
                                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">             
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                                    <button class="btn btn-primary" type="submit">Submit Card</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -216,7 +237,7 @@
 @section('script')
 <script type="text/javascript">
 document.getElementById('how_u_know_hod').addEventListener('change', function () {
-    var style = this.value == 1 ? 'block' : 'none';
+    var style = this.value == 'other' ? 'block' : 'none';
     document.getElementById('hidden_div_how').style.display = style;
 });
 </script>

@@ -37,9 +37,9 @@ class CardController extends Controller
             'address' => 'required|string|max:255',
             'age' => 'required|string|max:255',
             'source' => 'required|string|max:255',
-            'born_again' => 'required|numeric',
-            'member' => 'required|numeric',
-            'visitation' => 'required|numeric',
+            'born_again' => 'required|string',
+            'member' => 'required|string',
+            'visitation' => 'required|string',
             'program' => 'required|string',
             'phone' => 'required|numeric|digits:11',
         ]);
