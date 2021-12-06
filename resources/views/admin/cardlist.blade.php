@@ -38,13 +38,18 @@
                 <thead>
                   <tr>
                     <th class="text-center" style="width: 80px;"></th>
-                    <th style="width: 30%;">User</th>
+                    {{-- <th style="width: 30%;">User</th> --}}
                     <th style="width: 30%;">Name</th>
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Email</th>
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Phone</th>
+                    <th class="d-none d-sm-table-cell">Age Bracket</th>
+                    <th class="d-none d-sm-table-cell">Born Again</th>
+                    <th class="d-none d-sm-table-cell">How You Heard HOD</th>
+                    <th class="d-none d-sm-table-cell">Membership</th>
+                    <th class="d-none d-sm-table-cell">Visitation</th>
                     <th class="d-none d-sm-table-cell">Program</th>
-                    <th style="width: 20%;">When Registered</th>
-                    <th style="width: 10%;">Action</th>
+                    {{-- <th style="width: 20%;">When Registered</th>
+                    <th style="width: 10%;">Action</th> --}}
                   </tr>
                 </thead>
                 <tbody>
@@ -52,9 +57,9 @@
                     @foreach ($cards as $card)
                         <tr>
                             <td class="text-center">{{ $i++ }}</td>
-                            <td class="fw-semibold">
+                            {{-- <td class="fw-semibold">
                             <a href="#">{{ $card->user->name }}</a>
-                            </td>
+                            </td> --}}
                             <td class="fw-semibold">
                             <a href="#">{{ $card->name }}</a>
                             </td>
@@ -65,16 +70,48 @@
                             <em class="text-muted">{{ $card->phone}}</em>
                             </td>
                             <td class="d-none d-sm-table-cell">
-                            <span class="badge bg-success">{{ $card->program }}</span>
+                            {{ $card->age }}
                             </td>
-                            <td>
-                            <em class="text-muted">{{ \Carbon\Carbon::parse($card->created_at)->format('d/m/Y') }}</em>
+                            <td class="d-none d-sm-table-cell">
+                            
+                            @if($card->born_again == '1')
+                                  YES
+                              @elseif($card->born_again == '0')
+                                  NO
+                              @else
+                                {{ $card->born_again}}
+                              @endif
                             </td>
-                            <td>
+                            <td class="d-none d-sm-table-cell">
+                            {{ $card->source }}
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                              @if($card->member == '1')
+                                  YES
+                              @elseif($card->member == '0')
+                                  NO
+                              @else
+                                {{ $card->member}}
+                              @endif
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                              @if($card->visitation == '1')
+                                  YES
+                              @elseif($card->visitation == '0')
+                                  NO
+                              @else
+                                {{ $card->visitation}}
+                              @endif
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                            {{ $card->program }}
+                            </td>
+                            
+                            {{-- <td>
                               <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-block-vcenter_{{ $card->id }}">View</button>
                   
-                                {{-- <a href="" class="btn btn-primary btn-sm">View</a> --}}
-                            </td>
+                                {{-- <a href="" class="btn btn-primary btn-sm">View</a> 
+                            </td> --}}
                         </tr>
 
 
