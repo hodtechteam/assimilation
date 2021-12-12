@@ -1,5 +1,12 @@
 @extends('layouts.master')
 @section('title', 'Home | Fill Card')
+@section('style')
+<style>
+    #map {
+  height: 100%;
+}
+</style>
+@endsection
 
 @section('content')
  <!-- Hero -->
@@ -241,5 +248,8 @@ document.getElementById('how_u_know_hod').addEventListener('change', function ()
     document.getElementById('hidden_div_how').style.display = style;
 });
 </script>
+
+
+
 
 @endsection

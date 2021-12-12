@@ -19,7 +19,6 @@ class CardController extends Controller
 
     public function index()
     {
-
         return view('user.cards');
     }
 
@@ -44,23 +43,28 @@ class CardController extends Controller
             'phone' => 'required|numeric|digits:11',
         ]);
 
+        //$this->googleApi();
 
-        // $ip = '105.112.67.6'; //'105.112.67.191'; //'162.159.24.227';//$request->ip();
+        $data = $this->googleApi();
 
-        // dd(Location::get($ip));
+        $output = json_decode($data);
 
-        $card = Card::create($request->all());
-        $card->save();
-        return back()->with('success', 'Card inputed successfully'); 
+        return $output->results[0]->geometry->location; 
+       
+        // $card = Card::create($request->all());
+        // $card->save();
+        // return back()->with('success', 'Card inputed successfully'); 
     }
 
     public function googleApi()
     {
-        
-       // apiKey = AIzaSyAJ3PWHRjuHwbkl-9WBgxN-SJp4mnyJ4Ik
+        $address = 'Household Of David, Surulere Industrial Road, Ikeja';
+        $formattedAddr = urlencode($address);//str_replace(' ','+',$address);
+        $apiKey = 'AIzaSyAJ3PWHRjuHwbkl-9WBgxN-SJp4mnyJ4Ik';
         //curl -L -X GET 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name%2Crating%2Cformatted_phone_number&key=YOUR_API_KEY'
-        return Http::get('https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name%2Crating%2Cformatted_phone_number&key=AIzaSyAJ3PWHRjuHwbkl-9WBgxN-SJp4mnyJ4Ik');
+        //return Http::get('https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name%2Crating%2Cformatted_phone_number&key=AIzaSyAJ3PWHRjuHwbkl-9WBgxN-SJp4mnyJ4Ik');
     
+          return Http::get('https://maps.googleapis.com/maps/api/geocode/json?address='.$formattedAddr.'&sensor=true&key='.$apiKey);
     }
 
     public function cardList()
