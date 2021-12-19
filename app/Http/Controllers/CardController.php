@@ -45,15 +45,15 @@ class CardController extends Controller
 
         //$this->googleApi();
 
-        $data = $this->googleApi();
+        // $data = $this->googleApi();
 
-        $output = json_decode($data);
+        // $output = json_decode($data);
 
-        return $output->results[0]->geometry->location; 
+        // return $output->results[0]->geometry->location; 
        
-        // $card = Card::create($request->all());
-        // $card->save();
-        // return back()->with('success', 'Card inputed successfully'); 
+        $card = Card::create($request->all());
+        $card->save();
+        return back()->with('success', 'Card inputed successfully'); 
     }
 
     public function googleApi()
@@ -67,8 +67,19 @@ class CardController extends Controller
           return Http::get('https://maps.googleapis.com/maps/api/geocode/json?address='.$formattedAddr.'&sensor=true&key='.$apiKey);
     }
 
+    public function location($ln,$lat)
+    {
+        return [$ln,$lat];
+    }
     public function cardList()
     {
+
+        // $data = $this->googleApi();
+
+        // $output = json_decode($data);
+
+        // return $output->results[0]->geometry->location; 
+       
         $user = Auth::user();
 
         $cards = $user->myCards()->orderBy('created_at', 'desc')->get();

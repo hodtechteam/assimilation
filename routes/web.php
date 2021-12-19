@@ -32,6 +32,7 @@ Route::post('update/card/comment', [App\Http\Controllers\CardController::class, 
 Route::get('have/visited/{id}', [App\Http\Controllers\CardController::class, 'haveVisited']);
 Route::post('update/card', [App\Http\Controllers\CardController::class, 'update']);
 Route::get('edit/card/{id}', [App\Http\Controllers\CardController::class, 'editCard']);
+Route::get('location/lng/{lng}/lat/{lt}', [App\Http\Controllers\CardController::class, 'location']);
 
 //Admin Routes
 Route::get('all/cards', [App\Http\Controllers\AdminController::class, 'allCards']);
