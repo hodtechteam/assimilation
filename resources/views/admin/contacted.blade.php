@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Conatest Guests List')
+@section('title', 'Guests  Contacted')
 
 @section('content')
 <!-- Hero -->
@@ -10,7 +10,7 @@
               <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">Cards</li>
-                  <li class="breadcrumb-item active" aria-current="page">Contacted Guest List</li>
+                  <li class="breadcrumb-item active" aria-current="page"> Guest Contacted</li>
                 </ol>
               </nav>
             </div>

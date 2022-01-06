@@ -15,25 +15,25 @@ class AdminController extends Controller
 
     public function allCards()
     {
-        $cards = Card::all();
+        $cards = Card::orderBy('created_at', 'desc')->get();
         return view('admin.cardlist', ['cards' => $cards]);
     }
 
     public function contactedCards()
     {
-        $cards = Card::where('comment', '!=', null)->get();
+        $cards = Card::where('comment', '!=', null)->orderBy('created_at', 'desc')->get();
         return view('admin.contacted', ['cards' => $cards]);
     }
 
     public function visitedCards()
     {
-        $cards = Card::where('is_visited', true)->get();
+        $cards = Card::where('is_visited', true)->orderBy('created_at', 'desc')->get();
         return view('admin.visited', ['cards' => $cards]);
     }
 
     public function userList()
     {
-        $users = User::where('role', 'user')->get();
+        $users = User::where('role', 'user')->orderBy('created_at', 'desc')->get();
         return view('admin.user_list', ['users' => $users]);
     }
 
