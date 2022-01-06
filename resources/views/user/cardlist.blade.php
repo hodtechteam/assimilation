@@ -497,8 +497,8 @@
     function( position ){ // success cb
       var lat = position.coords.latitude;
       var lng = position.coords.longitude;
-
-      console.log(window.location = "http://localhost:7000/location/lng/"+lng+"/lat/"+lat);
+      console.log(position);
+      //console.log(window.location = "http://localhost:7000/location/lng/"+lng+"/lat/"+lat);
         //console.log( lng );
     },
     function(){ // fail cb

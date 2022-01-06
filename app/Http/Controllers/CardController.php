@@ -92,7 +92,7 @@ class CardController extends Controller
         $card = Card::where('id', $request->card_id)->first();
         $card->comment = $request->comment;
         $card->save();
-         return back()->with('success', 'Card Updated Successfully');
+         return back()->with('success', 'Follow Up Report added Successfully');
     }
 
     public function haveVisited($id)
@@ -120,7 +120,8 @@ class CardController extends Controller
         $editCard->source = $request->source;
         $editCard->source_other = $request->source_other;
         $editCard->born_again = $request->born_again;
-        $editCard->member = $request->visitation;
+        $editCard->member = $request->member;
+        $editCard->visitation = $request->visitation;
         $editCard->program = $request->program;
         $editCard->save();
         return back()->with('success', 'Card Updated Successfully');

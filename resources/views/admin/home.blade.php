@@ -121,7 +121,7 @@
                                 {{ $guest->email }}
                                 </td>
                                 <td class="d-none d-sm-table-cell fw-medium">
-                                {{ $guest->created_at }}
+                                {{ Carbon\Carbon::parse($guest->created_at)->format('d-m-Y') }}
                                 </td>
                             </tr>
                         @endforeach

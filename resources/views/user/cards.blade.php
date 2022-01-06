@@ -158,8 +158,17 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Are you Born Again</label>
-                                                        <input type="text" class="form-control @error('born_again') is-invalid @enderror" name="born_again" required value="{{ old('born_again') }}"> 
-                                                        
+                                                         <select name="born_again" class="form-control @error('born_again') is-invalid @enderror" required>
+                                                            @if(old('born_again'))
+                                                            <option selected value="{{ old('born_again') }}">{{ old('born_again') }}</option>
+                                                            <option @if(old('born_again') == "YES") hidden @endif value="YES">YES</option>
+                                                            <option @if(old('born_again') == "NO") hidden @endif value="NO">NO</option>
+                                                            @else
+                                                            <option value="">Select One</option>
+                                                            <option value="YES">YES</option>
+                                                            <option value="NO">NO</option>
+                                                            @endif
+                                                        </select>
                                                         @error('born_again')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -170,13 +179,18 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Would you Love to be a member of HOD</label>
-                                                        {{-- <select name="member" class="form-control @error('member') is-invalid @enderror" required>
+                                                        <select name="member" class="form-control @error('member') is-invalid @enderror" required>
+                                                            @if(old('visitation'))
+                                                            <option selected value="{{ old('member') }}">{{ old('member') }}</option>
+                                                            <option @if(old('member') == "YES") hidden @endif value="YES">YES</option>
+                                                            <option @if(old('member') == "NO") hidden @endif value="NO">NO</option>
+                                                            @else
                                                             <option value="">Select One</option>
-                                                            <option value="1">Yes</option>
-                                                            <option value="0">No</option>
-                                                        </select> --}}
-                                                        <input type="text" class="form-control @error('member') is-invalid @enderror" name="member" required value="{{ old('member') }}"> 
-                                                        
+                                                            <option value="YES">YES</option>
+                                                            <option value="NO">NO</option>
+                                                            @endif
+                                                        </select>
+
                                                         @error('member')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -187,8 +201,17 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Would you Love to be visited</label>
-                                                        <input type="text" class="form-control @error('visitation') is-invalid @enderror" name="visitation" required value="{{ old('visitation') }}"> 
-                                                        
+                                                        <select name="visitation" class="form-control @error('visitation') is-invalid @enderror" required>
+                                                            @if(old('visitation'))
+                                                            <option selected value="{{ old('visitation') }}">{{ old('visitation') }}</option>
+                                                            <option @if(old('visitation') == "YES") hidden @endif value="YES">YES</option>
+                                                            <option @if(old('visitation') == "NO") hidden @endif value="NO">NO</option>
+                                                            @else
+                                                            <option value="">Select One</option>
+                                                            <option value="YES">YES</option>
+                                                            <option value="NO">NO</option>
+                                                            @endif
+                                                        </select>
                                                         @error('visitation')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>

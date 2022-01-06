@@ -34,10 +34,10 @@
                                        
             <div class="block-content block-content-full">
               <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
-              <table class="table table-bordered table-responsive table-striped table-vcenter js-dataTable-buttons">
+              <table class="table table-bordered table-striped table-responsive table-vcenter js-dataTable-buttons">
                 <thead>
                   <tr>
-                    <th class="text-center" style="width: 80px;"></th>
+                    {{-- <th class="text-center" style="width: 80px;"></th> --}}
                     {{-- <th style="width: 30%;">User</th> --}}
                     <th style="width: 30%;">Name</th>
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Email</th>
@@ -48,18 +48,14 @@
                     <th class="d-none d-sm-table-cell">Membership</th>
                     <th class="d-none d-sm-table-cell">Visitation</th>
                     <th class="d-none d-sm-table-cell">Program</th>
-                    {{-- <th style="width: 20%;">When Registered</th>
-                    <th style="width: 10%;">Action</th> --}}
+                    <th style="width: 20%;">When Registered</th>
+                    {{-- <th style="width: 10%;">Action</th> --}}
                   </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     @foreach ($cards as $card)
                         <tr>
-                            <td class="text-center">{{ $i++ }}</td>
-                            {{-- <td class="fw-semibold">
-                            <a href="#">{{ $card->user->name }}</a>
-                            </td> --}}
                             <td class="fw-semibold">
                             <a href="#">{{ $card->name }}</a>
                             </td>
@@ -83,7 +79,11 @@
                               @endif
                             </td>
                             <td class="d-none d-sm-table-cell">
-                            {{ $card->source }}
+                              @if($card->source == '1' || $card->source == 'other')
+                                  {{ $card->source_other }}
+                              @else
+                                {{ $card->source }}
+                                @endif
                             </td>
                             <td class="d-none d-sm-table-cell">
                               @if($card->member == '1')
@@ -105,6 +105,9 @@
                             </td>
                             <td class="d-none d-sm-table-cell">
                             {{ $card->program }}
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                            {{ Carbon\Carbon::parse($card->created_at)->format('d-m-Y') }}
                             </td>
                             
                             {{-- <td>

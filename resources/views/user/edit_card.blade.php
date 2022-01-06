@@ -116,7 +116,7 @@
                                                             <optgroup>-----------</optgroup>
                                                             <option value="Friends and Family">Friends and Family</option>
                                                             <option value="Social Media">Social Media</option>
-                                                            <option value="1">Other</option>
+                                                            <option value="other">Other</option>
                                                             
                                                         </select>
                                                         @error('source')
@@ -137,8 +137,12 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Are you Born Again</label>
-                                                        <input type="text" class="form-control @error('born_again') is-invalid @enderror" id="validationCustom02" placeholder="Phone Number" name="born_again" value="{{ $card->born_again }}" required>
-                                                        
+                                                        <select name="born_again" class="form-control @error('born_again') is-invalid @enderror" required>
+                                                            <option value="{{ $card->born_again }}">{{ $card->born_again }}</option>
+                                                            <optgroup>-----------</optgroup>
+                                                            <option value="YES">YES</option>
+                                                            <option value="NO">NO</option>
+                                                        </select>
                                                         @error('born_again')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -149,8 +153,13 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Would you Love to be a member of HOD</label>
-                                                        <input type="text" class="form-control @error('member') is-invalid @enderror" id="validationCustom02" placeholder="Phone Number" name="member" value="{{ $card->member }}" required>
-                                                        
+                                                        {{-- <input type="text" class="form-control @error('member') is-invalid @enderror" id="validationCustom02" placeholder="Phone Number" name="member" value="{{ $card->member }}" required> --}}
+                                                        <select name="member" class="form-control @error('member') is-invalid @enderror" required>
+                                                            <option value="{{ $card->member }}">{{ $card->member }}</option>
+                                                            <optgroup>-----------</optgroup>
+                                                            <option value="YES">YES</option>
+                                                            <option value="NO">NO</option>
+                                                        </select>
                                                         @error('member')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -161,8 +170,13 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Would you Love to be visited</label>
-                                                        <input type="text" class="form-control @error('visitation') is-invalid @enderror" name="visitation" value="{{ $card->visitation }}" required>
-                                                        
+                                                        {{-- <input type="text" class="form-control @error('visitation') is-invalid @enderror" name="visitation" value="{{ $card->visitation }}" required> --}}
+                                                        <select name="visitation" class="form-control @error('visitation') is-invalid @enderror" required>
+                                                            <option value="{{ $card->visitation }}">{{ $card->visitation }}</option>
+                                                            <optgroup>-----------</optgroup>
+                                                            <option value="YES">YES</option>
+                                                            <option value="NO">NO</option>
+                                                        </select>
                                                         @error('visitation')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -209,11 +223,10 @@
 
 @endsection
 
-
 @section('script')
 <script type="text/javascript">
 document.getElementById('how_u_know_hod').addEventListener('change', function () {
-    var style = this.value == 1 ? 'block' : 'none';
+    var style = this.value == 'other' ? 'block' : 'none';
     document.getElementById('hidden_div_how').style.display = style;
 });
 </script>
