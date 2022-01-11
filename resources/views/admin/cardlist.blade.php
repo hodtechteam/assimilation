@@ -44,10 +44,11 @@
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Phone</th>
                     <th class="d-none d-sm-table-cell">Age Bracket</th>
                     <th class="d-none d-sm-table-cell">Born Again</th>
-                    <th class="d-none d-sm-table-cell">How You Heard HOD</th>
+                    <th class="d-none d-sm-table-cell">How You Heard of HOD</th>
                     <th class="d-none d-sm-table-cell">Membership</th>
                     <th class="d-none d-sm-table-cell">Visitation</th>
                     <th class="d-none d-sm-table-cell">Program</th>
+                    <th class="d-none d-sm-table-cell">Report</th>
                     <th style="width: 20%;">When Registered</th>
                     {{-- <th style="width: 10%;">Action</th> --}}
                   </tr>
@@ -105,6 +106,9 @@
                             </td>
                             <td class="d-none d-sm-table-cell">
                             {{ $card->program }}
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                            {{ $card->comment }}
                             </td>
                             <td class="d-none d-sm-table-cell">
                             {{ Carbon\Carbon::parse($card->created_at)->format('d-m-Y') }}

@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function allCards()
     {
-        $cards = Card::orderBy('created_at', 'desc')->get();
+        $cards = Card::orderBy('id', 'desc')->get();
         return view('admin.cardlist', ['cards' => $cards]);
     }
 
