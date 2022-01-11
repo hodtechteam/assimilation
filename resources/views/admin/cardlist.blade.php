@@ -38,7 +38,7 @@
                 <thead>
                   <tr>
                     {{-- <th class="text-center" style="width: 80px;"></th> --}}
-                    {{-- <th style="width: 30%;">User</th> --}}
+                    <th style="width: 30%;">User</th>
                     <th style="width: 30%;">Name</th>
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Email</th>
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Phone</th>
@@ -57,6 +57,9 @@
                     <?php $i = 1; ?>
                     @foreach ($cards as $card)
                         <tr>
+                          <td class="fw-semibold">
+                            <a href="#">{{ $card->user->name }}</a>
+                            </td>
                             <td class="fw-semibold">
                             <a href="#">{{ $card->name }}</a>
                             </td>
