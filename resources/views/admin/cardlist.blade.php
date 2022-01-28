@@ -18,13 +18,39 @@
         </div>
         <!-- END Hero -->
 
-
+        
           <!-- Dynamic Table with Export Buttons -->
 
 <div class="content">
+
+        <div class="col-md-12">
+          <form action="{{ route('allCard') }}" method="GET">
+            {{--  @csrf  --}}
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="mb-3">
+                      <label class="form-label" for="validationCustom01">Select Month</label>
+                      <input type="month" class="form-control" id="validationCustom01" name="month" required>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        {{--  <label class="form-label" for="validationCustom01">Select Month</label>  --}}
+                        <button class="btn btn-primary" type="submit">Filter </button>
+                        <a href="{{ route('allCard') }}" class="btn btn-warning" type="submit">Reset </a>
+                    </div>
+                </div>
+            </div>
+
+          </form>
+        </div>
+
+
           <div class="block block-rounded">
             <div class="block-header block-header-default">
-              <h3 class="block-title">All Guest <small>List</small></h3>
+              <h3 class="block-title">All Guest List - <small>{{ $cards->count() }}</small></h3>
             </div>
              @if (session('success'))
                   <div class="alert alert-success">

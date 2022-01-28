@@ -35,10 +35,11 @@ Route::get('edit/card/{id}', [App\Http\Controllers\CardController::class, 'editC
 Route::get('location/lng/{lng}/lat/{lt}', [App\Http\Controllers\CardController::class, 'location']);
 
 //Admin Routes
-Route::get('all/cards', [App\Http\Controllers\AdminController::class, 'allCards']);
+Route::get('all/cards', [App\Http\Controllers\AdminController::class, 'allCards'])->name('allCard');
 Route::get('contacted/cards', [App\Http\Controllers\AdminController::class, 'contactedCards']);
 Route::get('visited/cards', [App\Http\Controllers\AdminController::class, 'visitedCards']);
 Route::get('users/list', [App\Http\Controllers\AdminController::class, 'userList']);
 Route::get('user/info/{id}', [App\Http\Controllers\AdminController::class, 'userInfo']);
+Route::get('filter', [App\Http\Controllers\AdminController::class, 'filter'])->name('filter');
 
 

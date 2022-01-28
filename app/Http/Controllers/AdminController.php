@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,9 +14,16 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function allCards()
+    public function allCards(Request $request)
     {
-        $cards = Card::orderBy('id', 'desc')->get();
+        if(isset($request->month)) {
+            $year = Carbon::parse($request->month)->format('Y');
+            $month = Carbon::parse($request->month)->format('m');
+            $cards = Card::whereYear('created_at', $year)->whereMonth('created_at', $month)->get();            
+        }else{
+            $cards = Card::orderBy('id', 'desc')->get();
+        }
+        
         return view('admin.cardlist', ['cards' => $cards]);
     }
 
@@ -42,5 +50,23 @@ class AdminController extends Controller
         $user = User::find($id);
         $cards = $user->myCards()->orderBy('created_at', 'desc')->get();
         return view('admin.view_user_activity', ['user' => $user, 'cards' => $cards]);
+    }
+
+    public function filter(Request $request)
+    {
+        // // return $request->month;
+
+        // if(isset($request->month)) {
+        //     $request->month;
+
+
+
+            
+        // }else{
+        //     $audits = AuditTrail::orderBy('created_at', 'desc')->take(100)->get();
+        // }
+
+        // return Card::whereDate('created_at', $request->month)->get();
+
     }
 }
