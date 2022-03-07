@@ -38,7 +38,8 @@
                 <thead>
                   <tr>
                     <th style="width: 30%;">Name</th>
-                    <th class="d-none d-sm-table-cell" style="width: 20%;">Email</th>
+                    <th class="d-none d-sm-table-cell" style="width: 25%;">Email</th>
+                    <th class="d-none d-sm-table-cell" style="width: 20%;">Phone</th>
                     <th style="width: 5%;">No. of Guest</th>
                     <th style="width: 5%;">No. of Contacted</th>
                     <th style="width: 5%;">No. of Visited</th>
@@ -56,6 +57,9 @@
                             <td class="d-none d-sm-table-cell">
                             <em class="text-muted">{{ $card->email }}</em>
                             </td>
+                            <td class="d-none d-sm-table-cell">
+                              <em class="text-muted">{{ $card->phone }}</em>
+                              </td>
                             <td class="d-none d-sm-table-cell">
                             <em class="text-muted">{{ $card->mycards->count() }}</em>
                             </td>

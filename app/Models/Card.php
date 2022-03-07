@@ -11,7 +11,7 @@ class Card extends Model
 
     protected $table = "cards";
 
-    protected $fillable = ['user_id', 'program', 'name', 'email', 'phone', 'born_again', 'age', 'source', 'address', 'member', 'visitation', 'comment', 'is_visited', 'source_other'];
+    protected $fillable = ['user_id', 'program', 'name', 'email', 'phone', 'born_again', 'age', 'source', 'address', 'member', 'visitation', 'comment', 'is_visited', 'source_other', 'gender'];
 
     public function user()
     {

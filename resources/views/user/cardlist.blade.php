@@ -51,7 +51,7 @@
                               <h5 class="fs-base mb-1">Full Name</h5>
                               <small>{{ $card->name }}</small>
                             </a>
-                            <a class="list-group-item list-group-item-action" href="javascript:void(0)">
+                            <a class="list-group-item list-group-item-action" href="tel:{{$card->phone}}">
                               <h5 class="fs-base mb-1">Phone Number</h5>
                               <small>{{ $card->phone }}</small>
                             </a>
@@ -62,6 +62,10 @@
                             <a class="list-group-item list-group-item-action" href="javascript:void(0)">
                               <h5 class="fs-base mb-1">Home Address</h5>
                               <small>{{ $card->address }}</small>
+                            </a>
+                            <a class="list-group-item list-group-item-action" href="javascript:void(0)">
+                              <h5 class="fs-base mb-1">Gender</h5>
+                              <small>{{ $card->gender }}</small>
                             </a>
 
                             {{-- <a class="list-group-item list-group-item-action" href="javascript:void(0)">
@@ -98,7 +102,7 @@
                         <div class="block-content">
                           <div class="block-content bg-body-light">
                           
-                          <div class="d-flex justify-content-between push">
+                          {{-- <div class="d-flex justify-content-between push">
                             @if ($card->is_visited == false)
                               <a class="btn btn-sm btn-alt-secondary" href="{{ url('have/visited/'.$card->id) }}">
                                   <i class="fa fa-fw fa-pencil-alt opacity-50 me-1"></i> I have Visited
@@ -109,7 +113,7 @@
                               </a>
                             @endif
                           
-                          </div>
+                          </div> --}}
                           
                           @if($card->comment == '')
                           <form action="{{ url('update/card/comment')}}" method="POST">

@@ -27,6 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/user', [App\Http\Controllers\CardController::class, 'userHome']);
 Route::get('cards', [App\Http\Controllers\CardController::class, 'index']);
 Route::post('store/card', [App\Http\Controllers\CardController::class, 'store']);
+Route::post('update/phone', [App\Http\Controllers\CardController::class, 'updatePhone']);
 Route::get('card/list', [App\Http\Controllers\CardController::class, 'cardList']);
 Route::post('update/card/comment', [App\Http\Controllers\CardController::class, 'updateCardComment']);
 Route::get('have/visited/{id}', [App\Http\Controllers\CardController::class, 'haveVisited']);

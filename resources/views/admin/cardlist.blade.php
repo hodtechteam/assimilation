@@ -29,10 +29,16 @@
             <div class="row">
               <div class="col-md-6">
                   <div class="mb-3">
-                      <label class="form-label" for="validationCustom01">Select Month</label>
-                      <input type="month" class="form-control" id="validationCustom01" name="month" required>
+                      <label class="form-label" for="validationCustom01">Start Date</label>
+                      <input type="date" class="form-control" id="validationCustom01" name="start" required>
                   </div>
               </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label" for="validationCustom01">End Date</label>
+                    <input type="date" class="form-control" id="validationCustom01" name="end" required>
+                </div>
+            </div>
             </div>
             <div class="row">
                 <div class="col-md-6">

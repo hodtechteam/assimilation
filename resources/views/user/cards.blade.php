@@ -221,6 +221,27 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom02">Gender</label>
+                                                        <select name="gender" class="form-control @error('gender') is-invalid @enderror" required>
+                                                            @if(old('gender'))
+                                                            <option selected value="{{ old('gender') }}">{{ old('gender') }}</option>
+                                                            <option @if(old('gender') == "Male") hidden @endif value="Male">Male</option>
+                                                            <option @if(old('gender') == "Female") hidden @endif value="Female">Female</option>
+                                                            @else
+                                                            <option value="">Select One</option>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Female">Female</option>
+                                                            @endif
+                                                        </select>
+                                                        @error('gender')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Select Program</label>
                                                         <select name="program" class="form-control @error('program') is-invalid @enderror" required>
                                                             @if(old('program'))

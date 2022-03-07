@@ -16,12 +16,13 @@ class AdminController extends Controller
 
     public function allCards(Request $request)
     {
-        if(isset($request->month)) {
-            $year = Carbon::parse($request->month)->format('Y');
-            $month = Carbon::parse($request->month)->format('m');
-            $cards = Card::whereYear('created_at', $year)->whereMonth('created_at', $month)->get();            
+        if(isset($request->start) && isset($request->end)) {
+            // $year = Carbon::parse($request->month)->format('Y');
+            // $month = Carbon::parse($request->month)->format('m');
+            $cards = Card::whereDate('created_at', '>=', $request->start)
+            ->whereDate('created_at', '<=', $request->end)->get();//whereYear('created_at', $year)->whereMonth('created_at', $month)->get();            
         }else{
-            $cards = Card::orderBy('id', 'desc')->get();
+            $cards = Card::orderBy('id', 'desc')->orderBy('created_at', 'desc')->get();
         }
         
         return view('admin.cardlist', ['cards' => $cards]);

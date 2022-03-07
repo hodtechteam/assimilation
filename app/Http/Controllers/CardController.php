@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\GoogleApiLocation;
 use App\Models\Card;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -24,6 +25,11 @@ class CardController extends Controller
 
     public function userHome()
     {
+        $user = auth()->user();
+        if($user->phone == '')
+        {
+            return view('user.phone');
+        }
         $guest = auth()->user()->myCards()->orderBy('created_at', 'desc')->take('10')->get();
         return view('user.home', ['guests' => $guest]);
     }
@@ -40,6 +46,7 @@ class CardController extends Controller
             'member' => 'required|string',
             'visitation' => 'required|string',
             'program' => 'required|string',
+            'gender' => 'required|string',
             'phone' => 'required|numeric|digits:11',
         ]);
 
@@ -126,5 +133,17 @@ class CardController extends Controller
         $editCard->save();
         return back()->with('success', 'Card Updated Successfully');
 
+    }
+
+    public function updatePhone(Request $request)
+    {
+        $request->validate([
+            'phone' => 'required|numeric|digits:11',
+        ]);
+        $update = User::where('id', auth()->user()->id)->first();
+        $update->phone = $request->phone;
+        $update->unit = $request->unit;
+        $update->save();
+        return back()->with('success', 'Information Updated Successfully');
     }
 }
