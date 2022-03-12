@@ -50,6 +50,14 @@ class CardController extends Controller
             'phone' => 'required|numeric|digits:11',
         ]);
 
+        $payload = [
+            'api_key' => env('TERMI_API_KEY'),
+            'to' => '234'.substr($request->phone, 1),
+            'from' => 'BCToken',
+            'sms' => 'Welcome Home',
+            'type' => 'plain',
+            'channel' => 'generic'
+        ];
         //$this->googleApi();
 
         // $data = $this->googleApi();
@@ -60,7 +68,17 @@ class CardController extends Controller
        
         $card = Card::create($request->all());
         $card->save();
+        //$this->sendSMS($payload);
+        
         return back()->with('success', 'Card inputed successfully'); 
+    }
+
+    public function sendSMS($payload)
+    {
+       return Http::withHeaders([
+        'Accept' => 'application/json',
+        'Content-Type' => 'application/json-patch+json'
+       ])->post('https://api.ng.termii.com/api/sms/send', $payload)->throw();
     }
 
     public function googleApi()

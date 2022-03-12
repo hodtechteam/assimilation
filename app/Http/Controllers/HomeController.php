@@ -30,7 +30,7 @@ class HomeController extends Controller
             return redirect('user');
         }
         $users = User::where('role', 'user')->get();
-        $guests = Card::orderBy('created_at', 'desc')->take('10')->get();
+        $guests = Card::orderBy('created_at', 'desc')->get();
         return view('admin.home', ['users' => $user, 'guests' => $guests]);
     }
 }
