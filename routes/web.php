@@ -42,5 +42,9 @@ Route::get('visited/cards', [App\Http\Controllers\AdminController::class, 'visit
 Route::get('users/list', [App\Http\Controllers\AdminController::class, 'userList']);
 Route::get('user/info/{id}', [App\Http\Controllers\AdminController::class, 'userInfo']);
 Route::get('filter', [App\Http\Controllers\AdminController::class, 'filter'])->name('filter');
+Route::get('uncontacted/cards', [\App\Http\Controllers\AdminController::class, 'uncontacted']);
+Route::get('manage/house-hold', [\App\Http\Controllers\AdminController::class, 'manageHousehold']);
+Route::post('store/subgroup', [App\Http\Controllers\AdminController::class, 'storeSubgroup']);
+Route::post('store/household', [App\Http\Controllers\AdminController::class, 'storeHousehold']);
 
 

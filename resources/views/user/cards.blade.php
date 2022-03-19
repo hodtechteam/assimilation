@@ -92,6 +92,71 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom02">Location</label>
+                                                        <select name="location" class="form-control @error('location') is-invalid @enderror" required>
+                                                           @foreach ($households as $hold)
+                                                               {{-- <option value=""></option> --}}
+                                                               <option value="{{ $hold->household_name }}">{{ $hold->household_name }}</option>
+                                                           @endforeach
+                                                            {{-- @if(old('location'))
+                                                            <option selected value="{{ old('location') }}">{{ old('location') }}</option>
+                                                            <option @if(old('location') == "Ikeja") hidden @endif value="Ikeja">Ikeja</option>
+                                                            <option @if(old('location') == "Adeniyi Jones") hidden @endif value="Adeniyi Jones">Adeniyi Jones</option>
+                                                            <option @if(old('location') == "Ogba") hidden @endif value="Ogba">Ogba</option>
+                                                            <option @if(old('location') == "Fagba") hidden @endif value="Fagba">Fagba</option>
+                                                            <option @if(old('location') == "Ishaga") hidden @endif value="Ishaga">Ishaga</option>
+                                                            <option @if(old('location') == "Obawole") hidden @endif value="Obawole">Obawole</option>
+                                                            <option @if(old('location') == "Agege") hidden @endif value="Agege">Agege</option>
+                                                            <option @if(old('location') == "Iyana-Ipaja") hidden @endif value="Iyana-Ipaja">Iyana Ipaja</option>
+                                                            <option @if(old('location') == "Victoria Island") hidden @endif value="Victoria Island">Victoria Island</option>
+                                                            <option @if(old('location') == "Lekki") hidden @endif value="Lekki">Lekki</option>
+                                                            <option @if(old('location') == "Ajah") hidden @endif value="Ajah">Ajah</option>
+                                                            <option @if(old('location') == "Ayobo") hidden @endif value="Ayobo">Ayobo</option>
+                                                            <option @if(old('location') == "Ikorodu") hidden @endif value="Ikorodu">Ikorodu</option>
+                                                            <option @if(old('location') == "Ikoyi") hidden @endif value="Ikoyi">Ikoyi</option>
+                                                            <option @if(old('location') == "Mushin") hidden @endif value="Mushin">Mushin</option>
+                                                            <option @if(old('location') == "Yaba") hidden @endif value="Yaba">Yaba</option>
+                                                            <option @if(old('location') == "Magodo") hidden @endif value="Magodo">Magodo</option>
+                                                            <option @if(old('location') == "Maryland") hidden @endif value="Maryland">Maryland</option>
+                                                            <option @if(old('location') == "Anthony") hidden @endif value="Anthony">Anthony</option>
+                                                            <option @if(old('location') == "berger") hidden @endif value="Berger">Berger</option>
+                                                            <option @if(old('location') == "Surulere") hidden @endif value="Surulere">Surulere</option>
+                                                            
+                                                            
+                                                            @else
+                                                            <option value="">Select One</option>
+                                                            <option  value="Ikeja">Ikeja</option>
+                                                            <option  value="Adeniyi Jones">Adeniyi Jones</option>
+                                                            <option  value="Ogba">Ogba</option>
+                                                            <option  value="Fagba">Fagba</option>
+                                                            <option  value="Ishaga">Ishaga</option>
+                                                            <option  value="Obawole">Obawole</option>
+                                                            <option  value="Agege">Agege</option>
+                                                            <option  value="Iyana-Ipaja">Iyana Ipaja</option>
+                                                            <option  value="Victoria Island">Victoria Island</option>
+                                                            <option  value="Lekki">Lekki</option>
+                                                            <option  value="Ajah">Ajah</option>
+                                                            <option  value="Ayobo">Ayobo</option>
+                                                            <option  value="Ikorodu">Ikorodu</option>
+                                                            <option  value="Ikoyi">Ikoyi</option>
+                                                            <option  value="Mushin">Mushin</option>
+                                                            <option  value="Yaba">Yaba</option>
+                                                            <option  value="Magodo">Magodo</option>
+                                                            <option  value="Maryland">Maryland</option>
+                                                            <option  value="Anthony">Anthony</option>
+                                                            <option  value="Berger">Berger</option>
+                                                            <option  value="Surulere">Surulere</option>
+                                                            @endif --}}
+                                                        </select>
+                                                        @error('location')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Age Bracket</label>
                                                         <select name="age" class="form-control @error('age') is-invalid @enderror" required>
                                                             @if(old('age'))

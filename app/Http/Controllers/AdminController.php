@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\HouseholdLocation;
+use App\Models\SubGroup;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -69,5 +71,40 @@ class AdminController extends Controller
 
         // return Card::whereDate('created_at', $request->month)->get();
 
+    }
+
+    public function uncontacted()
+    {
+        $uncontacted = Card::where('comment', null)->get();
+
+        return view('admin.uncontacted', ['uncontacted' => $uncontacted]);
+    }
+
+    public function manageHousehold()
+    {
+        $subgroup = SubGroup::all();
+        $household = HouseholdLocation::orderBy('created_at', 'desc')->get();
+        return view('admin.manage_household', ['subgroups' => $subgroup, 'household' => $household]);
+    }
+
+    public function storeSubgroup(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|unique:sub_groups',
+        ]);
+        $subgroup = SubGroup::create(['name' => $request->name]);
+        return back()->with('success', 'Subgroup Created Successfully'); 
+    }
+
+    public function storeHousehold(Request $request)
+    {
+        $request->validate([
+            'household_name' => 'required|string|unique:household_locations',
+        ]);
+       $household = HouseholdLocation::create([
+           'sub_group_id' => $request->sub_group_id, 
+           'household_name' => $request->household_name
+        ]);
+        return back()->with('success', 'Household Created Successfully'); 
     }
 }

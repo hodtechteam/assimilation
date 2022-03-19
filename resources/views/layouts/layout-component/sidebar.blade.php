@@ -6,16 +6,22 @@
             @if(auth()->user()->hasRole('admin'))
                             
                     <li class="nav-main-item">
-                        <a class="nav-main-link active" href="{{ url('home') }}">
+                        <a class="nav-main-link" href="{{ url('home') }}">
                         <i class="nav-main-link-icon fa fa-location-arrow"></i>
                         <span class="nav-main-link-name">Dashboard</span>
                         </a>
                     </li>
                            
                     <li class="nav-main-item">
-                        <a class="nav-main-link active" href="{{ url('users/list') }}">
+                        <a class="nav-main-link" href="{{ url('users/list') }}">
                         <i class="nav-main-link-icon fa fa-users"></i>
                         <span class="nav-main-link-name">Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ url('manage/house-hold') }}">
+                        <i class="nav-main-link-icon fa fa-settings"></i>
+                        <span class="nav-main-link-name">Manage Household</span>
                         </a>
                     </li>
                     <li class="nav-main-item">
@@ -31,12 +37,16 @@
                             <a class="nav-main-link" href="{{ url('contacted/cards') }}">
                             <span class="nav-main-link-name">Contacted</span>
                             </a>
+                            <a class="nav-main-link" href="{{ url('uncontacted/cards') }}">
+                                <span class="nav-main-link-name">Uncontacted</span>
+                            </a>
                             <a class="nav-main-link" href="{{ url('visited/cards') }}">
                             <span class="nav-main-link-name">Visited</span>
                             </a>
                         </li>
                         </ul>
                     </li>
+                    
             @else
 
                     <li class="nav-main-item">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\GoogleApiLocation;
 use App\Models\Card;
+use App\Models\HouseholdLocation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,8 @@ class CardController extends Controller
 
     public function index()
     {
-        return view('user.cards');
+        $households = HouseholdLocation::all();
+        return view('user.cards', ['households' => $households]);
     }
 
     public function userHome()

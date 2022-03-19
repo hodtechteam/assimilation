@@ -24,7 +24,7 @@
 <div class="content">
           <div class="block block-rounded">
             <div class="block-header block-header-default">
-              <h3 class="block-title">Contacted Guests <small>List</small></h3>
+              <h3 class="block-title">Visited Guests <small>List</small></h3>
             </div>
             <div class="block-content block-content-full">
                 @if (session('success'))
