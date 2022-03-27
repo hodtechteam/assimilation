@@ -56,7 +56,8 @@ class CardController extends Controller
             'api_key' => env('TERMI_API_KEY'),
             'to' => '234'.substr($request->phone, 1),
             'from' => 'BCToken',
-            'sms' => 'Welcome Home',
+            'sms' => 'Dearly Beloved, Sunday Service was glorious with your presence at Household of David. For more information check out our website: www.householdofdavid.org. We look forward to seeing you.God bless you.
+            Kindly click on the link below to join the membership class of HOD.',
             'type' => 'plain',
             'channel' => 'generic'
         ];

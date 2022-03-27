@@ -12,7 +12,7 @@ class Card extends Model
     protected $table = "cards";
 
     protected $fillable = ['user_id', 'program', 'name', 'email', 'phone', 'born_again', 'age', 'source', 'address', 
-    'member', 'visitation', 'comment', 'is_visited', 'source_other', 'gender', 'location'];
+    'member', 'visitation', 'comment', 'is_visited', 'source_other', 'gender', 'location', 'invited', 'date_added'];
 
     public function user()
     {

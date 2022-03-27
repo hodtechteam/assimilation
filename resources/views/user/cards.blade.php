@@ -95,8 +95,9 @@
                                                         <label class="form-label" for="validationCustom02">Location</label>
                                                         <select name="location" class="form-control @error('location') is-invalid @enderror" required>
                                                            @foreach ($households as $hold)
-                                                               {{-- <option value=""></option> --}}
+                                                              
                                                                <option value="{{ $hold->household_name }}">{{ $hold->household_name }}</option>
+                                                                <option value="Other">Other</option>
                                                            @endforeach
                                                             {{-- @if(old('location'))
                                                             <option selected value="{{ old('location') }}">{{ old('location') }}</option>
@@ -164,20 +165,16 @@
                                                             <option @if(old('age') == "Less than 18 years") hidden @endif value="less than 18">Less than 18 years</option>
                                                             <option @if(old('age') == "18 to 25 years") hidden @endif value="18 to 25 years">18 to 25 years</option>
                                                             <option @if(old('age') == "25 to 30 years") hidden @endif value="25 to 30 years">25 to 30 years</option>
-                                                            <option @if(old('age') == "30 to 40 years") hidden @endif value="30 to 40 years">30 to 40 years</option>
-                                                            <option @if(old('age') == "40 to 50 years") hidden @endif value="40 to 50 years">40 to 50 years</option>
-                                                            <option @if(old('age') == "50 to 60 years") hidden @endif value="50 to 60 years">50 to 60 years</option>
-                                                            <option @if(old('age') == "60 and above") hidden @endif value="60 and above">60 and above</option>
+                                                            <option @if(old('age') == "30 to 44 years") hidden @endif value="30 to 44 years">30 to 44 years</option>
+                                                            <option @if(old('age') == "45 and above") hidden @endif value="45 and above">45 and above</option>
                                                             
                                                             @else
                                                             <option value="">Select One</option>
                                                             <option value="less than 18">Less than 18 years</option>
                                                             <option value="18 to 25">18 to 25 years</option>
                                                             <option value="25 to 30">25 to 30 years</option>
-                                                            <option value="30 to 40">30 to 40 years</option>
-                                                            <option value="40 to 50">40 to 50 years</option>
-                                                            <option value="50 to 60">50 to 60 years</option>
-                                                            <option value="60 and above">60 and above</option>
+                                                            <option value="30 to 44">30 to 44 years</option>
+                                                            <option value="45 and above">45 and above</option>
                                                             @endif
                                                         </select>
                                                         @error('age')
@@ -217,11 +214,23 @@
                                                         </div>
                                         
                                                     </div>
-
                                                 </div>
+
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="validationCustom02">Are you Born Again</label>
+                                                        <label class="form-label" for="validationCustom02">Who Invited you</label>
+                                                        <input type="text" class="form-control @error('invited') is-invalid @enderror" id="validationCustom02" placeholder="Who invited you" name="invited" value="{{ old('invited') }}" required>
+                                                        @error('invited')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Born Again?</label>
                                                          <select name="born_again" class="form-control @error('born_again') is-invalid @enderror" required>
                                                             @if(old('born_again'))
                                                             <option selected value="{{ old('born_again') }}">{{ old('born_again') }}</option>
@@ -248,10 +257,12 @@
                                                             <option selected value="{{ old('member') }}">{{ old('member') }}</option>
                                                             <option @if(old('member') == "YES") hidden @endif value="YES">YES</option>
                                                             <option @if(old('member') == "NO") hidden @endif value="NO">NO</option>
+                                                            <option @if(old('member') == "Undecided") hidden @endif value="Undecided">Undecided</option>
                                                             @else
                                                             <option value="">Select One</option>
                                                             <option value="YES">YES</option>
                                                             <option value="NO">NO</option>
+                                                            <option value="Undecided">Undecided</option>
                                                             @endif
                                                         </select>
 
@@ -272,8 +283,8 @@
                                                             <option @if(old('visitation') == "NO") hidden @endif value="NO">NO</option>
                                                             @else
                                                             <option value="">Select One</option>
-                                                            <option value="YES">YES</option>
-                                                            <option value="NO">NO</option>
+                                                            <option value="Online">Online</option>
+                                                            <option value="Physical">Physical</option>
                                                             @endif
                                                         </select>
                                                         @error('visitation')
@@ -312,10 +323,12 @@
                                                             <option selected value="{{ old('program') }}">{{ old('program') }}</option>
                                                             <option @if(old('program') == "Sunday") hidden @endif value="Sunday">Sunday</option>
                                                             <option @if(old('program') == "Wednesday") hidden @endif value="Wednesday">Wednesday</option>
+                                                            <option @if(old('program') == "Special Program") hidden @endif value="Special Program">Special Program</option>
                                                             @else
                                                             <option value="">Select One</option>
                                                             <option value="Sunday">Sunday</option>
                                                             <option value="Wednesday">Wednesday</option>
+                                                            <option value="Special Program">Special Program</option>
                                                             @endif
                                                         </select>
                                                         @error('program')
@@ -325,7 +338,19 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                            </div>   
+                                            </div> 
+                                            
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom02">Program Date</label>
+                                                    <input type="date" class="form-control @error('date_added') is-invalid @enderror" id="validationCustom02" placeholder="Who invited you" name="date_added" value="{{ old('date_added') }}" required>
+                                                    @error('date_added')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
 
                                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">             
                                             <div class="col-md-6">

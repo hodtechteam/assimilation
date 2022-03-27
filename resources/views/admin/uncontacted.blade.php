@@ -77,9 +77,9 @@
                             <td>
                             <em class="text-muted">{{ \Carbon\Carbon::parse($card->created_at)->format('d/m/Y') }}</em>
                             </td>
-                            {{-- <td>
-                              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-block-vcenter_{{ $card->id }}">View</button>
-                  
+                            <td>
+                              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-block-vcenter_{{ $card->id }}">Edit Report</button>
+                            </td>
                                 {{-- <a href="" class="btn btn-primary btn-sm">View</a> --}}
                             {{-- </td> --}}
                         </tr>
@@ -175,7 +175,7 @@
                                             </a>
                                           </div>
                                           
-                                          <form action="{{ url('update/card')}}" method="POST">
+                                          <form action="{{ url('update/card/comment')}}" method="POST">
                                             @csrf
                                           <div class="d-flex justify-content-between push">
                                             <textarea name="comment" class="form-control" required></textarea>
