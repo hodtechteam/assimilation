@@ -279,12 +279,14 @@
                                                         <select name="visitation" class="form-control @error('visitation') is-invalid @enderror" required>
                                                             @if(old('visitation'))
                                                             <option selected value="{{ old('visitation') }}">{{ old('visitation') }}</option>
-                                                            <option @if(old('visitation') == "YES") hidden @endif value="YES">YES</option>
-                                                            <option @if(old('visitation') == "NO") hidden @endif value="NO">NO</option>
+                                                            <option @if(old('visitation') == "Online") hidden @endif value="Online">Online</option>
+                                                            <option @if(old('visitation') == "Physical") hidden @endif value="Physical">Physical</option>
+                                                            <option @if(old('visitation') == "No") hidden @endif value="No">No</option>
                                                             @else
                                                             <option value="">Select One</option>
                                                             <option value="Online">Online</option>
                                                             <option value="Physical">Physical</option>
+                                                            <option value="No">No</option>
                                                             @endif
                                                         </select>
                                                         @error('visitation')

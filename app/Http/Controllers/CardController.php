@@ -52,12 +52,16 @@ class CardController extends Controller
             'phone' => 'required|numeric|digits:11',
         ]);
 
+         $name = $request->name;
+         $service = $request->program;
+
+         $message = 'Hello '.$name.', '.$service.' Service was glorious with your presence at Household of David. For more information check out our website: www.householdofdavid.org. We look forward to seeing you.God bless you. Kindly click on the link below to join the membership class of HOD';
+        
         $payload = [
             'api_key' => env('TERMI_API_KEY'),
             'to' => '234'.substr($request->phone, 1),
-            'from' => 'BCToken',
-            'sms' => 'Dearly Beloved, Sunday Service was glorious with your presence at Household of David. For more information check out our website: www.householdofdavid.org. We look forward to seeing you.God bless you.
-            Kindly click on the link below to join the membership class of HOD.',
+            'from' => 'HOD',
+            'sms' => $message,
             'type' => 'plain',
             'channel' => 'generic'
         ];
@@ -71,7 +75,7 @@ class CardController extends Controller
        
         $card = Card::create($request->all());
         $card->save();
-        //$this->sendSMS($payload);
+        $this->sendSMS($payload);
         
         return back()->with('success', 'Card inputed successfully'); 
     }
