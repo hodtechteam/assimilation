@@ -97,8 +97,9 @@
                                                            @foreach ($households as $hold)
                                                               
                                                                <option value="{{ $hold->household_name }}">{{ $hold->household_name }}</option>
-                                                                <option value="Other">Other</option>
+                                                               
                                                            @endforeach
+                                                           <option value="Other">Other</option>
                                                             {{-- @if(old('location'))
                                                             <option selected value="{{ old('location') }}">{{ old('location') }}</option>
                                                             <option @if(old('location') == "Ikeja") hidden @endif value="Ikeja">Ikeja</option>
