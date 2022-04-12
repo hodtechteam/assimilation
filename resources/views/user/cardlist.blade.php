@@ -101,8 +101,9 @@
                         </div>
                         <div class="block-content">
                           <div class="block-content bg-body-light">
-                          
-                          {{-- <div class="d-flex justify-content-between push">
+                            @if(auth()->user()->unit == 'Visitation')
+
+                          <div class="d-flex justify-content-between push">
                             @if ($card->is_visited == false)
                               <a class="btn btn-sm btn-alt-secondary" href="{{ url('have/visited/'.$card->id) }}">
                                   <i class="fa fa-fw fa-pencil-alt opacity-50 me-1"></i> I have Visited
@@ -113,39 +114,47 @@
                               </a>
                             @endif
                           
-                          </div> --}}
+                          </div>
+
                           
-                          @if($card->comment == '')
-                          <form action="{{ url('update/card/comment')}}" method="POST">
-                            @csrf
-                            <div class="d-flex justify-content-between push">
-                              <textarea name="comment" class="form-control" required></textarea>
-                            </div>
-                            <input type="hidden" name="card_id" value="{{  $card->id }}">
-                          <button type="submit" class="btn btn-sm btn-alt-secondary">Update Record</button>
-                          <br>
-                        </form>
-                        @else
-                            <div class="alert alert-info btn-sm alert-sm">Report Recorded!</div>
-                            
-                            <form action="{{ url('update/card/comment')}}" method="POST">
-                              @csrf
-                              <div class="d-flex justify-content-between push">
-                                <textarea name="comment" class="form-control" required>{{  $card->comment }}</textarea>
-                              </div>
-                              <input type="hidden" name="card_id" value="{{  $card->id }}">
-                            <button type="submit" class="btn btn-sm btn-alt-secondary">Edit Record</button>
-                            <br> <br>
-                          </form>
+                          @else
+                          
+                                @if($card->comment == '')
+                                <form action="{{ url('update/card/comment')}}" method="POST">
+                                  @csrf
+                                  <div class="d-flex justify-content-between push">
+                                    <textarea name="comment" class="form-control" required></textarea>
+                                  </div>
+                                  <input type="hidden" name="card_id" value="{{  $card->id }}">
+                                <button type="submit" class="btn btn-sm btn-alt-secondary">Update Record</button>
+                                <br>
+                              </form>
+                              @else
+                                  <div class="alert alert-info btn-sm alert-sm">Report Recorded!</div>
+                                  
+                                  <form action="{{ url('update/card/comment')}}" method="POST">
+                                    @csrf
+                                    <div class="d-flex justify-content-between push">
+                                      <textarea name="comment" class="form-control" required>{{  $card->comment }}</textarea>
+                                    </div>
+                                    <input type="hidden" name="card_id" value="{{  $card->id }}">
+                                  <button type="submit" class="btn btn-sm btn-alt-secondary">Edit Record</button>
+                                  <br> <br>
+                                </form>
+                              @endif
                         @endif
 
                         </div>
                         <br>
                       </div>
                     </div>
+                    @if(auth()->user()->unit == 'Visitation')
                     {{-- <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-block-vcenter_{{ $card->id }}">View All Information</button> --}}
+                        
+                        @else
                         <a href="{{ url('edit/card/'.$card->id) }}" class="btn btn-info btn-sm">Edit Information</a>
                         <br><br>
+                    @endif
                   </div>
                 </div>
 

@@ -7,7 +7,7 @@
         <div class="content">
           <!-- Overview -->
           <div class="row items-push">
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-sm-6 col-xl-6">
               <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
                 <div class="block-content block-content-full flex-grow-1">
                   <div class="item rounded-3 bg-body mx-auto my-3">
@@ -24,7 +24,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-sm-6 col-xl-6">
               <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
                 <div class="block-content block-content-full flex-grow-1">
                   <div class="item rounded-3 bg-body mx-auto my-3">
@@ -41,7 +41,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-sm-6 col-xl-6">
               <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
                 <div class="block-content block-content-full flex-grow-1">
                   <div class="item rounded-3 bg-body mx-auto my-3">
@@ -58,7 +58,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-sm-6 col-xl-6">
               <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
                 <div class="block-content block-content-full">
                   <div class="item rounded-3 bg-body mx-auto my-3">
@@ -80,7 +80,7 @@
 
           
           <!-- Latest Orders + Stats -->
-          <div class="row">
+          {{-- <div class="row">
             <div class="col-md-12">
               <!--  Latest Orders -->
               <div class="block block-rounded block-mode-loading-refresh">
@@ -154,7 +154,7 @@
               </div>
               <!-- END Latest Orders -->
             </div>
-          </div>
+          </div> --}}
           <!-- END Latest Orders + Stats -->
         </div>
         <!-- END Page Content -->

@@ -32,7 +32,7 @@ class CardController extends Controller
         {
             return view('user.phone');
         }
-        $guest = auth()->user()->myCards()->orderBy('created_at', 'desc')->take('10')->get();
+        $guest = auth()->user()->myCards()->get();
         return view('user.home', ['guests' => $guest]);
     }
 
@@ -65,16 +65,18 @@ class CardController extends Controller
             'type' => 'plain',
             'channel' => 'generic'
         ];
-        //$this->googleApi();
-
-        // $data = $this->googleApi();
-
-        // $output = json_decode($data);
-
-        // return $output->results[0]->geometry->location; 
        
         $card = Card::create($request->all());
         $card->save();
+       // $user = Auth::user();
+        if($request->visitation == 'Online' || $request->visitation == 'Physical')
+        {
+            //get a user in visitation
+            $getUser = User::where('unit', 'Visitation')->get()->random('1');
+            $collection = collect($getUser);
+            $user = $collection->first();
+            $user->userUnit()->attach($card->id);
+        }
         $this->sendSMS($payload);
         
         return back()->with('success', 'Card inputed successfully'); 
@@ -113,9 +115,12 @@ class CardController extends Controller
         // return $output->results[0]->geometry->location; 
        
         $user = Auth::user();
-
-        $cards = $user->myCards()->orderBy('created_at', 'desc')->get();
-
+        if($user->unit == 'Visitation')
+        {
+            $cards = $user->userUnit()->orderBy('created_at', 'desc')->get();
+        }else{
+            $cards = $user->myCards()->orderBy('created_at', 'desc')->get();
+        }
         return view('user.cardlist', ['cards' => $cards]);
     }
 
