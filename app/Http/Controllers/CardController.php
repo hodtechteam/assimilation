@@ -115,12 +115,14 @@ class CardController extends Controller
         // return $output->results[0]->geometry->location; 
        
         $user = Auth::user();
-        if($user->unit == 'Visitation')
-        {
-            $cards = $user->userUnit()->orderBy('created_at', 'desc')->get();
-        }else{
-            $cards = $user->myCards()->orderBy('created_at', 'desc')->get();
-        }
+        // if($user->unit == 'Visitation')
+        // {
+        //     $cards = $user->userUnit()->orderBy('created_at', 'desc')->get();
+        // }else{
+        //     $cards = $user->myCards()->orderBy('created_at', 'desc')->get();
+        // }
+
+        $cards = $user->myCards()->orderBy('created_at', 'desc')->get();
         return view('user.cardlist', ['cards' => $cards]);
     }
 
