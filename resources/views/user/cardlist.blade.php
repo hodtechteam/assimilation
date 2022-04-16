@@ -101,7 +101,7 @@
                         </div>
                         <div class="block-content">
                           <div class="block-content bg-body-light">
-                            @if(auth()->user()->unit == 'Visitation')
+                            {{-- @if(auth()->user()->unit == 'Visitation')
 
                           <div class="d-flex justify-content-between push">
                             @if ($card->is_visited == false)
@@ -114,10 +114,10 @@
                               </a>
                             @endif
                           
-                          </div>
+                          </div> --}}
 
                           
-                          @else
+                          {{-- @else --}}
                           
                                 @if($card->comment == '')
                                 <form action="{{ url('update/card/comment')}}" method="POST">
@@ -142,19 +142,21 @@
                                   <br> <br>
                                 </form>
                               @endif
-                        @endif
+                        {{-- @endif --}}
 
                         </div>
                         <br>
                       </div>
                     </div>
-                    @if(auth()->user()->unit == 'Visitation')
+                    <a href="{{ url('edit/card/'.$card->id) }}" class="btn btn-info btn-sm">Edit Information</a>
+                        <br><br>
+                    {{-- @if(auth()->user()->unit == 'Visitation')
                     {{-- <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-block-vcenter_{{ $card->id }}">View All Information</button> --}}
                         
-                        @else
+                        {{-- @else
                         <a href="{{ url('edit/card/'.$card->id) }}" class="btn btn-info btn-sm">Edit Information</a>
                         <br><br>
-                    @endif
+                    @endif --}}
                   </div>
                 </div>
 
