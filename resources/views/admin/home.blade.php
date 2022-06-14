@@ -75,6 +75,48 @@
                 </div>
               </div>
             </div>
+            <div class="col-sm-12 col-xl-6">
+              <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+                <div class="block-content block-content-full">
+                  <div class="item rounded-3 bg-body mx-auto my-3">
+                    <i class="fa fa-wallet fa-lg text-primary"></i>
+                  </div>
+                  <div class="fs-1 fw-bold">{{ $guests->where('member', 'YES')->count() }}</div>
+                  <div class="text-muted mb-3">Willing to become a Member</div>
+                </div>
+                <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                  <a class="fw-medium" href="{{ url('#') }}">
+                    View All
+                    <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-xl-6">
+              <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+                <div class="block-content block-content-full">
+                  <div class="item rounded-3 bg-body mx-auto my-3">
+                    <i class="fa fa-wallet fa-lg text-primary"></i>
+                  </div>
+                  <?php 
+                  $total_guest = $guests->count(); 
+                  $willing_to_join = $guests->where('member', 'YES')->count();
+
+                  $percentage = $willing_to_join / $total_guest * 100;
+
+                  ?>
+                  <div class="fs-1 fw-bold">{{ number_format($percentage) }}%</div>
+                  <div class="text-muted mb-3">% Willing to Join</div>
+                </div>
+                <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                  <a class="fw-medium" href="{{ url('#') }}">
+                    View All
+                    <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
           <!-- END Overview -->
 

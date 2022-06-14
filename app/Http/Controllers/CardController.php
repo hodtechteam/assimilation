@@ -49,7 +49,7 @@ class CardController extends Controller
             'visitation' => 'required|string',
             'program' => 'required|string',
             'gender' => 'required|string',
-            'phone' => 'required|numeric|digits:11',
+            'phone' => 'required|numeric',
         ]);
 
          $name = $request->name;
