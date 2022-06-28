@@ -21,7 +21,7 @@ class CardController extends Controller
 
     public function index()
     {
-        $households = HouseholdLocation::all();
+        $households = HouseholdLocation::orderBy('household_name', 'desc')->get();
         return view('user.cards', ['households' => $households]);
     }
 

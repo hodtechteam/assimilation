@@ -6,14 +6,14 @@
 
     <title>@yield('title')</title>
 
-    <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta name="description" content="House Hold of David - Assimilation Ministry">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework">
-    <meta property="og:site_name" content="Dashmix">
-    <meta property="og:description" content="">
+    <meta property="og:title" content="Household of David - Assimilation Ministry">
+    <meta property="og:site_name" content="Assimilation">
+    <meta property="og:description" content="This is a property of Household of David">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
@@ -170,7 +170,7 @@
             <div class="dropdown d-inline-block">
               <button type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-fw fa-user d-sm-none"></i>
-                <span class="d-none d-sm-inline-block">{{ auth()->user()->name }}</span>
+                <span class="d-none d-sm-inline-block">{{ auth()->user()->name }} ({{ auth()->user()->unit == null ? 'admin' : auth()->user()->unit }})</span>
                 <i class="fa fa-fw fa-angle-down opacity-50 ms-1 d-none d-sm-inline-block"></i>
               </button>
               <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
@@ -178,9 +178,9 @@
                   User Options
                 </div>
                 <div class="p-2">
-                  <a class="dropdown-item" href="be_pages_generic_profile.html">
+                  {{-- <a class="dropdown-item" href="#">
                     <i class="far fa-fw fa-user me-1"></i> Profile
-                  </a>
+                  </a> --}}
                   
                   <div role="separator" class="dropdown-divider"></div>
 

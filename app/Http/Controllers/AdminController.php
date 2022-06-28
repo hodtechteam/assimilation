@@ -107,4 +107,10 @@ class AdminController extends Controller
         ]);
         return back()->with('success', 'Household Created Successfully'); 
     }
+
+    public function viewVisitationList()
+    {
+        $cards = Card::where('is_visited', true)->orderBy('created_at', 'desc')->get();
+        return view('admin.visitation_report', ['cards' => $cards]);
+    }
 }

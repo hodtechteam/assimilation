@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing');
 });
+
 //google sign in and sign up
 Route::get('auth/google', [App\Http\Controllers\GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [App\Http\Controllers\GoogleSocialiteController::class, 'handleGoogleCallback']);
@@ -34,6 +34,8 @@ Route::get('have/visited/{id}', [App\Http\Controllers\CardController::class, 'ha
 Route::post('update/card', [App\Http\Controllers\CardController::class, 'update']);
 Route::get('edit/card/{id}', [App\Http\Controllers\CardController::class, 'editCard']);
 Route::get('location/lng/{lng}/lat/{lt}', [App\Http\Controllers\CardController::class, 'location']);
+Route::get('visitation', [\App\Http\Controllers\VisitationConroller::class, 'visitationList']);
+Route::post('update/visitation/report', [\App\Http\Controllers\VisitationConroller::class, 'sendVisitationReport']);
 
 //Admin Routes
 Route::get('all/cards', [App\Http\Controllers\AdminController::class, 'allCards'])->name('allCard');
@@ -46,5 +48,6 @@ Route::get('uncontacted/cards', [\App\Http\Controllers\AdminController::class, '
 Route::get('manage/house-hold', [\App\Http\Controllers\AdminController::class, 'manageHousehold']);
 Route::post('store/subgroup', [App\Http\Controllers\AdminController::class, 'storeSubgroup']);
 Route::post('store/household', [App\Http\Controllers\AdminController::class, 'storeHousehold']);
+Route::get('visitation/list', [App\Http\Controllers\AdminController::class, 'viewVisitationList']);
 
 
