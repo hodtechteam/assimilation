@@ -23,4 +23,9 @@ class Card extends Model
     {
         return $this->belongsToMany(Card::class, 'user_units', 'card_id');
     }
+
+    public function visitor()
+    {
+        return $this->hasOne(Card::class, 'user_id');
+    }
 }

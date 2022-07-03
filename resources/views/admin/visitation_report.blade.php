@@ -51,6 +51,9 @@
                 <?php $i = 1; ?>
                 @foreach ($cards as $card)
                     <tr>
+                        {{-- <td class="fw-semibold">
+                            {{ $card->visitor()->id }}
+                        </td> --}}
                         <td class="fw-semibold">
                         <a href="#">{{ $card->name }}</a>
                         </td>
