@@ -20,6 +20,10 @@ Route::get('/', function () {
 Route::get('auth/google', [App\Http\Controllers\GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [App\Http\Controllers\GoogleSocialiteController::class, 'handleGoogleCallback']);
 
+//QRCodes
+Route::get('qr/code', [\App\Http\Controllers\QRCodeController::class, 'qrCode']);
+Route::get('form', [\App\Http\Controllers\QRCodeController::class, 'fillForm']);
+Route::post('store/form', [\App\Http\Controllers\QRCodeController::class, 'storeForm']);
 
 Auth::routes();
 
