@@ -8,6 +8,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.1/css/fontawesome.min.css" integrity="sha512-8rb78MsWdBwG33ttLB6t7IcdslYqRmVu/j8/feqbdMrsS5WHYYeT0mZp6TiX5U8oTcZ+thGlgMkJjKcA6oympw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @media (min-width: 1025px) {
+        .h-custom {
+        height: 100vh !important;
+        }
+        }
+    </style>
 </head>
 
 <body>
