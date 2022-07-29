@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Assimilation Registration form</title>
+    <title>First time Guest Registration form</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.1/css/fontawesome.min.css" integrity="sha512-8rb78MsWdBwG33ttLB6t7IcdslYqRmVu/j8/feqbdMrsS5WHYYeT0mZp6TiX5U8oTcZ+thGlgMkJjKcA6oympw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,7 +25,7 @@
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-lg-8 col-xl-6">
               <div class="card rounded-3">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                <img src="https://pbs.twimg.com/media/FJTA1u2XMAQ4C2E.jpg"
                   class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
                   alt="Sample photo">
                 <div class="card-body p-4 p-md-5">

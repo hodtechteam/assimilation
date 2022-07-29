@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Assimilation QR Code</title>
+    <title>First Time Guest</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -28,13 +28,13 @@
 
         <div class="card">
             <div class="card-header">
-                <h2>Assimilation QR Code</h2>
+                <h2>First Time Guest</h2>
             </div>
             <div class="col-lg-12" id="printarea">
                 <div class="card-body">
                     
                     <center>
-                        <h4>First Timer Registration QRCode  </h4><br>
+                        <h4>First Time Guest</h4><br>
                         {!! QrCode::size(850)->generate('http://assimilation.e-portal.com.ng/form') !!}
                     </center>
                     <br>
