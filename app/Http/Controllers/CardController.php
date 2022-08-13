@@ -55,7 +55,7 @@ class CardController extends Controller
          $name = $request->name;
          $service = $request->program;
 
-         $message = 'Hello '.$name.', '.$service.' Service was glorious with your presence at Household of David. For more information check out our website: www.householdofdavid.org. We look forward to seeing you.God bless you. Kindly click on the link below to join the membership class of HOD';
+         $message = 'Hello '.$name.', '.$service.' Service was glorious with your presence at Household of David. For more information check out our website: www.householdofdavid.org. We look forward to seeing you.God bless you. Kindly click on the link below to join the membership class of HOD http://Bit.ly/hodms';
         
         $payload = [
             'api_key' => env('TERMI_API_KEY'),
