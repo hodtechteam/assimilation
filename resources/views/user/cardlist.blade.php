@@ -67,6 +67,10 @@
                               <h5 class="fs-base mb-1">Gender</h5>
                               <small>{{ $card->gender }}</small>
                             </a>
+                            <a class="list-group-item list-group-item-action" href="javascript:void(0)">
+                              <h5 class="fs-base mb-1">Service Date</h5>
+                              <small>{{ $card->date_added}}</small>
+                            </a>
 
                             {{-- <a class="list-group-item list-group-item-action" href="javascript:void(0)">
                               <h5 class="fs-base mb-1">Age Bracket</h5>

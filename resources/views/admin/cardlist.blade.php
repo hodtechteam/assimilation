@@ -83,7 +83,7 @@
                     <th class="d-none d-sm-table-cell">Location</th>
                     <th class="d-none d-sm-table-cell">Address</th>
                     <th class="d-none d-sm-table-cell">Report</th>
-                    <th style="width: 20%;">When Registered</th>
+                    <th style="width: 20%;">Service Date</th>
                     {{-- <th style="width: 10%;">Action</th> --}}
                   </tr>
                 </thead>
@@ -154,7 +154,7 @@
                             {{ $card->comment }}
                             </td>
                             <td class="d-none d-sm-table-cell">
-                            {{ Carbon\Carbon::parse($card->created_at)->format('d-m-Y') }}
+                            {{ Carbon\Carbon::parse($card->date_added)->format('d-m-Y') }}
                             </td>
                             
                             {{-- <td>
