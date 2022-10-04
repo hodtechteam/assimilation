@@ -85,10 +85,10 @@
                         <i class="nav-main-link-icon fa fa-clone"></i>
                         <span class="nav-main-link-name">Visitation Card</span>
                         </a>
-                        <a class="nav-main-link active" href="{{ url('cards') }}">
+                        {{-- <a class="nav-main-link active" href="{{ url('cards') }}">
                             <i class="nav-main-link-icon fa fa-clone"></i>
                             <span class="nav-main-link-name">Create Card</span>
-                        </a>
+                        </a> --}}
                     </li>
                     @endif
 

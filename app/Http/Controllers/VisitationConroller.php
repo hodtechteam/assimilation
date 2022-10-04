@@ -9,8 +9,8 @@ class VisitationConroller extends Controller
 {
     public function visitationList()
     {
-        $cards = auth()->user()->userUnit()->orderBy('created_at', 'desc')->get();
-        
+        //auth()->user()->userUnit()->orderBy('created_at', 'desc')->get();
+        $cards = Card::where('visitation', 'Physical')->orWhere('visitation', 'Online')->orderBy('date_added', 'desc')->get(); 
         return view('user.visitation_list', ['cards' => $cards]);
 
     }

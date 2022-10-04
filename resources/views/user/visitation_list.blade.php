@@ -30,9 +30,63 @@
             </div>
         @endif
 
+        <div class="table-responsive">
+          <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
+              <table class="table table-bordered table-striped  table-vcenter js-dataTable-buttons">
+                <thead>
+                  <tr>
+                    {{-- <th class="text-center" style="width: 80px;"></th> --}}
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Pref.</th>
+                    <th>Day</th>
+                    <th>Report</th>
+                    <th>Service Date</th>
+                    <th>When Registered</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    @foreach ($cards as $card)
+                        <tr>
+                            <td class="fw-semibold">
+                            <a href="#">{{ $card->name }}</a>
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                            <em class="text-muted">{{ $card->phone}}</em>
+                            </td>
+                            
+                            <td class="d-none d-sm-table-cell">
+                                {{ $card->address }}
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                              {{ $card->visitation }}
+                              </td>
+                              <td class="d-none d-sm-table-cell">
+                                {{ $card->program}}
+                                </td>
+                            <td class="d-none d-sm-table-cell">
+                            {{ $card->visitation_report }}
+                            </td>
+
+                            <td class="d-none d-sm-table-cell">
+                              {{ Carbon\Carbon::parse(@$card->date_added)->format('d-m-Y') }}
+                              </td>
+                            <td class="d-none d-sm-table-cell">
+                            {{ Carbon\Carbon::parse($card->created_at)->format('d-m-Y') }}
+                            </td>
+                        </tr>
+                    @endforeach
+                  
+                </tbody>
+              </table>
+          </div>
+        </div>
+
     
 
-        @foreach ($cards as $card)
+        {{-- @foreach ($cards as $card)
           <div class="col-md-6 col-xl-6">
             <div class="block block-rounded text-center">
               <div class="block-content block-content-full bg-image" style="background-image: url('{{ asset('assets/media/photos/photo4.jpg') }}');">
@@ -93,7 +147,7 @@
             </div>
           </div>
 
-        @endforeach
+        @endforeach --}}
         
   
       </div>
@@ -105,6 +159,6 @@
 @section('script')
 
 
-<script src="{{ asset('assets/js/dashmix.app.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/dashmix.app.min.js') }}"></script> --}}
 
 @endsection

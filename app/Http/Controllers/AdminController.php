@@ -108,9 +108,16 @@ class AdminController extends Controller
         return back()->with('success', 'Household Created Successfully'); 
     }
 
-    public function viewVisitationList()
+    public function viewVisitationList(Request $request)
     {
-        $cards = Card::where('is_visited', true)->orderBy('created_at', 'desc')->get();
+        
+        // if(isset($request->start) && isset($request->end)) {
+        //     $cards = Card::where('visitation', 'Physical')->orWhere('visitation', 'Online')->whereDate('date_added', '>=', $request->start)
+        //     ->whereDate('date_added', '<=', $request->end)->orderBy('date_added', 'desc')->get();//whereYear('created_at', $year)->whereMonth('created_at', $month)->get();            
+        // }else{
+        //     $cards = Card::where('visitation', 'Physical')->orWhere('visitation', 'Online')->orderBy('name', 'desc')->get();
+        // }
+        $cards = Card::where('visitation', 'Physical')->orWhere('visitation', 'Online')->orderBy('date_added', 'desc')->get();
         return view('admin.visitation_report', ['cards' => $cards]);
     }
 }

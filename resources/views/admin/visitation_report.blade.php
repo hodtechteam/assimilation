@@ -34,46 +34,88 @@
           @endif
                                    
         <div class="block-content block-content-full">
-          <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
-          <table class="table table-bordered table-striped table-responsive table-vcenter js-dataTable-buttons">
-            <thead>
-              <tr>
-                {{-- <th class="text-center" style="width: 80px;"></th> --}}
-                <th style="width: 30%;">Name</th>
-                <th class="d-none d-sm-table-cell" style="width: 20%;">Phone</th>
-                <th class="d-none d-sm-table-cell">Address</th>
-                <th class="d-none d-sm-table-cell">Report</th>
-                <th style="width: 20%;">When Registered</th>
-                {{-- <th style="width: 10%;">Action</th> --}}
-              </tr>
-            </thead>
-            <tbody>
-                <?php $i = 1; ?>
-                @foreach ($cards as $card)
+          {{-- <code>Note: The dates are filtered in Service Date</code>
+          <div class="col-md-12">
+            <form action="{{ route('visitation.list') }}" method="GET">
+              {{--  @csrf  --
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label" for="validationCustom01">Start Date</label>
+                        <input type="date" class="form-control" id="validationCustom01" name="start" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                      <label class="form-label" for="validationCustom01">End Date</label>
+                      <input type="date" class="form-control" id="validationCustom01" name="end" required>
+                  </div>
+              </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                          
+                          <button class="btn btn-primary" type="submit">Filter </button>
+                          <a href="{{ route('visitation.list') }}" class="btn btn-warning" type="submit">Reset </a>
+                      </div>
+                  </div>
+              </div>
+  
+            </form> --}}
+          {{-- </div> --}}
+            <div class="table-responsive">
+            <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
+                <table class="table table-bordered table-striped  table-vcenter js-dataTable-buttons">
+                  <thead>
                     <tr>
-                        {{-- <td class="fw-semibold">
-                            {{ $card->visitor()->id }}
-                        </td> --}}
-                        <td class="fw-semibold">
-                        <a href="#">{{ $card->name }}</a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                        <em class="text-muted">{{ $card->phone}}</em>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            {{ $card->address }}
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                        {{ $card->visitation_report }}
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                        {{ Carbon\Carbon::parse($card->created_at)->format('d-m-Y') }}
-                        </td>
+                      {{-- <th class="text-center" style="width: 80px;"></th> --}}
+                      <th>Name</th>
+                      <th>Phone</th>
+                      <th>Address</th>
+                      <th>Pref.</th>
+                      <th>Day</th>
+                      <th>Report</th>
+                      <th>Service Date</th>
+                      <th>When Registered</th>
                     </tr>
-                @endforeach
-              
-            </tbody>
-          </table>
+                  </thead>
+                  <tbody>
+                      <?php $i = 1; ?>
+                      @foreach ($cards as $card)
+                          <tr>
+                              <td class="fw-semibold">
+                              <a href="#">{{ $card->name }}</a>
+                              </td>
+                              <td class="d-none d-sm-table-cell">
+                              <em class="text-muted">{{ $card->phone}}</em>
+                              </td>
+                              
+                              <td class="d-none d-sm-table-cell">
+                                  {{ $card->address }}
+                              </td>
+                              <td class="d-none d-sm-table-cell">
+                                {{ $card->visitation }}
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                  {{ $card->program}}
+                                  </td>
+                              <td class="d-none d-sm-table-cell">
+                              {{ $card->visitation_report }}
+                              </td>
+
+                              <td class="d-none d-sm-table-cell">
+                                {{ Carbon\Carbon::parse(@$card->date_added)->format('d-m-Y') }}
+                                </td>
+                              <td class="d-none d-sm-table-cell">
+                              {{ Carbon\Carbon::parse($card->created_at)->format('d-m-Y') }}
+                              </td>
+                          </tr>
+                      @endforeach
+                    
+                  </tbody>
+                </table>
+            </div>
         </div>
       </div>
 </div>
