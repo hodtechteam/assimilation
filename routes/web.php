@@ -40,7 +40,7 @@ Route::get('edit/card/{id}', [App\Http\Controllers\CardController::class, 'editC
 Route::get('location/lng/{lng}/lat/{lt}', [App\Http\Controllers\CardController::class, 'location']);
 Route::get('visitation', [\App\Http\Controllers\VisitationConroller::class, 'visitationList']);
 Route::post('update/visitation/report', [\App\Http\Controllers\VisitationConroller::class, 'sendVisitationReport']);
-
+Route::get('search/user', [\App\Http\Controllers\VisitationConroller::class, 'searchUser']);
 //Admin Routes
 Route::get('all/cards', [App\Http\Controllers\AdminController::class, 'allCards'])->name('allCard');
 Route::get('contacted/cards', [App\Http\Controllers\AdminController::class, 'contactedCards']);

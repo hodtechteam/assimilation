@@ -21,21 +21,149 @@
   <div class="content content-full content-boxed">
     <!-- Latest Friends -->
         <h2 class="content-heading">
-          <i class="si si-users me-1"></i> Vistiors' List - {{ count($cards) }}
+          <i class="si si-users me-1"></i> Search Visitor's Information
         </h2>
       <div class="row">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
 
-        <div class="table-responsive">
+        <form class="js-validation-reminder" action="{{ url('visitation') }}" method="GET">
+        <!-- Text -->
+  
+       
+        <div class="row">
+          <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+              @if (session('success'))
+              <div class="alert alert-success" role="alert">
+                  {{ session('success') }}
+              </div>
+              @endif
+  
+              @if (session('error'))
+              <div class="alert alert-danger" role="alert">
+                  {{ session('error') }}
+              </div>
+              @endif
+  
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
+  
+              <div class="mb-4">
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <i class="fa fa-phone"></i>
+                  </span>
+                  <input type="text" class="form-control @error('phone') is-invalid @enderror" id="reminder-credential" name="phone" value="{{ old('phone') }}" placeholder="Enter phone Number" required>
+                  {{-- <input type="text" class="form-control" id="example-group1-input1" name="example-group1-input1"> --}}
+                </div>
+              </div>
+              <div class="text-center mb-4">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fa fa-fw fa-reply opacity-50 me-1"></i> Search User
+                </button>
+
+                <a href="{{ url('visitation') }}"class="btn btn-warning">
+                  <i class="fa fa-fw fa-times opacity-50 me-1"></i> Clear Search 
+                </a>
+  
+              </div>
+            </div>
+            <div class="col-lg-3"></div>
+         
+        </div>
+        <!-- END Text -->
+      </form>
+
+      
+      
+@if($cards->count() > 0)
+      <hr>
+      <form action="{{ url('update/visitation/report') }}" method="POST">
+        @csrf
+       <div>
+        <div>
+          <h4>User Information</h4>
+            {{-- <ul class="list-group push"> --}}
+            @foreach ($cards as $card)
+{{--             
+              <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+                Name
+                 <span class="badge rounded-pill bg-info">{{ $card->name }} </span>
+               </li>
+               <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+                Phone Number
+                 <span class="badge rounded-pill bg-info">{{ $card->phone }} </span>
+               </li>
+               <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+                Address
+                 <span class="badge rounded-pill bg-info">{{ $card->address }} </span>
+               </li>
+               <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+                Service
+                 <span class="badge rounded-pill bg-info">{{ $card->program }} </span>
+               </li>
+               <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+                Service Date
+                 <span class="badge rounded-pill bg-info">{{ $card->date_added }} </span>
+               </li> --}}
+               <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th><td>{{ $card->name }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Phone</th><td>{{ $card->phone }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Address</th><td>{{ $card->address }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Service</th><td>{{ $card->program }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Service Date</th><td>{{ $card->date_added }}</td>
+                      </tr>
+                    </thead>
+                  </table>
+               </div>
+            @endforeach
+          {{-- </ul> --}}
+            
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Enter Report:</label>
+            <textarea class="form-control" id="message-text" name="report" required>{{ $card->visitation_report }}</textarea>
+          </div>
+          <input type="hidden" name="card_id" value="{{ $card->id }}">
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-fw fa-reply opacity-50 me-1"></i> Upload Report
+            </button>
+
+          </div>
+        </div>
+      </form>
+@endif
+
+
+
+
+
+        {{-- <div class="table-responsive">
           <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
               <table class="table table-bordered table-striped  table-vcenter js-dataTable-buttons">
                 <thead>
                   <tr>
-                    {{-- <th class="text-center" style="width: 80px;"></th> --}}
+                    <th class="text-center" style="width: 80px;"></th>
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Address</th>
@@ -82,7 +210,7 @@
                 </tbody>
               </table>
           </div>
-        </div>
+        </div> --}}
 
     
 
