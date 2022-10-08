@@ -355,6 +355,8 @@
                                                 </div>
                                             </div>
 
+                                            <input type="hidden" name="visitee_id" value="1">
+
                                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">             
                                             <div class="col-md-6">
                                                 <div class="mb-3">
