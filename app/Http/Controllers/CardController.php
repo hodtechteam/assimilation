@@ -77,7 +77,7 @@ class CardController extends Controller
             $user = $collection->first();
             $user->userUnit()->attach($card->id);
         }
-        $this->sendSMS($payload);
+       // $this->sendSMS($payload);
         
         return back()->with('success', 'Card inputed successfully'); 
     }
