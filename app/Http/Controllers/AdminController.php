@@ -24,7 +24,7 @@ class AdminController extends Controller
             $cards = Card::whereDate('date_added', '>=', $request->start)
             ->whereDate('date_added', '<=', $request->end)->get();//whereYear('created_at', $year)->whereMonth('created_at', $month)->get();            
         }else{
-            $cards = Card::orderBy('id', 'desc')->orderBy('created_at', 'desc')->paginate(100);
+            $cards = Card::orderBy('id', 'desc')->orderBy('created_at', 'desc')->paginate(200);
         }
         
         return view('admin.cardlist', ['cards' => $cards]);
