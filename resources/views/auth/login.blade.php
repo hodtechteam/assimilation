@@ -96,7 +96,7 @@
  --}}
 
 
- <!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -171,7 +171,7 @@
                     
                       </div>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-2">
                       <div class="input-group input-group-lg">
                         <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required>
 
@@ -196,6 +196,20 @@
                         {{-- <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> --}}
                         <img src="https://img.icons8.com/color/20/000000/google-logo.png"/> Google Sign In
                       </a>
+
+                      <div class="d-sm-flex center-content-sm-between align-items-sm-center text-center text-sm-start mt-2">
+                        <div class="fw-semibold fs-sm py-1">
+                          @if (Route::has('password.request'))
+                          <a href="{{ route('password.request') }}">Forgot Password</a>
+                          @endif
+                        </div>
+                      </div>
+
+                    
+                                        {{-- <a href="{{ route('password.request') }}">
+                                            {{ __('Forgot Your Password?') }}
+                                        </a> --}}
+                                  
                       
                       {{-- <a href="{{ url('auth/google') }}">Google lOGIN</a> --}}
                     </div>
