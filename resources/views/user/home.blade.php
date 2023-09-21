@@ -5,7 +5,7 @@
 
  <!-- Page Content -->
         <div class="content">
-          <!-- Overview -->
+          <!-- Overview --> <h3>{{ $centre }} Centre</h3>
           <div class="row items-push">
             <div class="col-sm-6 col-xl-6">
               <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">

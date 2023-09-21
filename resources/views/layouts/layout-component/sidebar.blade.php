@@ -25,6 +25,12 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ route('church-centres') }}">
+                        <i class="nav-main-link-icon fa fa-settings"></i>
+                        <span class="nav-main-link-name">Manage Church Centres</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
                         <a class="nav-main-link" href="{{ url('visitation/list') }}">
                         <i class="nav-main-link-icon fa fa-settings"></i>
                         <span class="nav-main-link-name">Visitation List</span>

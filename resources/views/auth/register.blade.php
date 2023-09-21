@@ -82,6 +82,16 @@
                       </div>
                     </div>
                     <div class="mb-4">
+                      <div class="form-line focused-error">
+                        <select name="church-centre" class="form-control show-tick">
+                            <option value="" selected>Select your church centre</option>
+                            @foreach ($centres as $centre)
+                              <option value="{{ $centre->id }}">{{ $centre->name }}</option>
+                            @endforeach
+                        </select>
+                      </div>
+                    </div>
+                    <div class="mb-4">
                       <div class="input-group input-group-lg">
                         <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('name') }}" required autocomplete="name" autofocus>
 

@@ -4,9 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Welcome to Assimilation Ministry</title>
+    <title>HOD - Assimilation Ministry</title>
     <meta name="description"
-          content="Knight is a beautiful Bootstrap 4 template for product landing pages."/>
+          content="HOD Assimilation Ministry."/>
 
     <!--Inter UI font-->
     <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
 
     <!-- Bootstrap CSS / Color Scheme -->
     <link rel="stylesheet" href="{{ asset('res/css/default.css') }}" id="theme-color">
@@ -26,7 +29,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-md navbar-dark">
             <a class="navbar-brand heading-black" href="{{url('/')}}">
-                Knight
+                <img src="{{ url('assets/images/logo.png') }}" alt="logo" width="100" height="100">
             </a>
             <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"

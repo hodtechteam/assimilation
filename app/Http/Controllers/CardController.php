@@ -27,13 +27,15 @@ class CardController extends Controller
 
     public function userHome()
     {
-        $user = auth()->user();
+        // $user_id = auth()->id();
+        $user = User::with('churchCentre')->where('id', auth()->id())->first();
         if($user->phone == '')
         {
             return view('user.phone');
         }
         $guest = auth()->user()->myCards()->get();
-        return view('user.home', ['guests' => $guest]);
+        $centre = $user->churchCentre->name;
+        return view('user.home', ['guests' => $guest, 'centre' => $centre]);
     }
 
     public function store(Request $request)
@@ -65,9 +67,8 @@ class CardController extends Controller
             'type' => 'plain',
             'channel' => 'generic'
         ];
-       
         $card = Card::create($request->all());
-        $card->save();
+        // $card->save();
        // $user = Auth::user();
         if($request->visitation == 'Online' || $request->visitation == 'Physical')
         {
