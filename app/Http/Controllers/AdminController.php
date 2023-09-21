@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use App\Models\HouseholdLocation;
+use App\Models\ChurchCentre;
 use App\Models\SubGroup;
 use App\Models\User;
 use Carbon\Carbon;
@@ -85,6 +86,54 @@ class AdminController extends Controller
         $subgroup = SubGroup::all();
         $household = HouseholdLocation::orderBy('created_at', 'desc')->get();
         return view('admin.manage_household', ['subgroups' => $subgroup, 'household' => $household]);
+    }
+
+    public function manageChurchCentres()
+    {
+        $centres = ChurchCentre::all();
+        return view('admin.church_centre', ['centres' => $centres]);
+    }
+
+    public function createChurchCentres()
+    {
+        return view('admin.create_church_centre');
+    }
+
+    public function storeChurchCentres(Request $request)
+    {
+        $validated = $request->validate(['name' => 'string|required|unique:church_centres']);
+        ChurchCentre::create(['name' => $validated['name']]);
+        return back()->with('success', 'Church Centre Created Successfully');
+    }
+
+    public function editChurchCentre(ChurchCentre $centre)
+    {
+        return view('admin.edit_church_centre', ['centre' => $centre]);
+    }
+
+    public function updateChurchCentre(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'status' => 'required|in:"Active", "Inactive"'
+        ]);
+        try {
+            $check_duplicate = ChurchCentre::where('name', $validated['name'])->first();
+        } catch (\Exception $e) {
+            return back()->with('success', 'Server error');
+        }
+
+        if ($check_duplicate) {
+            if ((int)$check_duplicate->id !== (int)$id) {
+                return back()->with('success', 'Record with same name exists');
+            }
+        }
+        ChurchCentre::where('id', $id)->update([
+            'name' => $validated['name'],
+            'status' => $validated['status']
+        ]);
+
+        return back()->with('success', 'Record update successful');
     }
 
     public function storeSubgroup(Request $request)

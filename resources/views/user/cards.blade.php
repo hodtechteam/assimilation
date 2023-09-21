@@ -357,7 +357,8 @@
 
                                             <input type="hidden" name="visitee_id" value="1">
 
-                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">             
+                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                            <input type="hidden" name="church_centre_id" value="{{ auth()->user()->church_centre_id }}">             
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <button class="btn btn-primary" type="submit">Submit Card</button>

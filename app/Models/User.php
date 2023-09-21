@@ -22,7 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
-        'visitee_id'
+        'visitee_id',
+        'church_centre_id',
     ];
 
     /**
@@ -60,5 +61,10 @@ class User extends Authenticatable
     public function userUnit()
     {
         return $this->belongsToMany(Card::class, 'user_units');
+    }
+
+    public function churchCentre()
+    {
+        return $this->belongsTo(ChurchCentre::class);
     }
 }

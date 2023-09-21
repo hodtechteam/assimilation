@@ -102,7 +102,14 @@
                   $total_guest = $guests->count(); 
                   $willing_to_join = $guests->where('member', 'YES')->count();
 
-                  $percentage = $willing_to_join / $total_guest * 100;
+                  if ($total_guest === 0) {
+                    $percentage = 0;
+                  } else {
+                    $percentage = $willing_to_join / $total_guest * 100;
+                  }
+                  
+
+                  // $percentage = $willing_to_join / $total_guest * 100;
 
                   ?>
                   <div class="fs-1 fw-bold">{{ number_format($percentage) }}%</div>

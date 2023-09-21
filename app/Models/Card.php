@@ -13,7 +13,7 @@ class Card extends Model
 
     protected $fillable = ['user_id', 'program', 'name', 'email', 'phone', 'born_again', 'age', 'source', 'address', 
     'member', 'visitation', 'comment', 'is_visited', 'source_other', 'gender', 'location', 'invited', 'date_added', 
-    'visitation_report', 'visitee_id'];
+    'visitation_report', 'visitee_id', 'church_centre_id'];
 
     public function user()
     {
@@ -28,5 +28,10 @@ class Card extends Model
     public function visitor()
     {
         return $this->hasOne(Card::class, 'user_id');
+    }
+
+    public function churchCentre()
+    {
+        return $this->belongsTo(ChurchCentre::class, 'church_centre_id');
     }
 }

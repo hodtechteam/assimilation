@@ -50,6 +50,11 @@ Route::get('user/info/{id}', [App\Http\Controllers\AdminController::class, 'user
 Route::get('filter', [App\Http\Controllers\AdminController::class, 'filter'])->name('filter');
 Route::get('uncontacted/cards', [\App\Http\Controllers\AdminController::class, 'uncontacted']);
 Route::get('manage/house-hold', [\App\Http\Controllers\AdminController::class, 'manageHousehold']);
+Route::get('manage/church-centres', [\App\Http\Controllers\AdminController::class, 'manageChurchCentres'])->name('church-centres');
+Route::get('manage/centres', [\App\Http\Controllers\AdminController::class, 'createChurchCentres'])->name('create-church-centres');
+Route::post('manage/centres', [\App\Http\Controllers\AdminController::class, 'storeChurchCentres'])->name('store-church-centres');
+Route::get('manage/centre-edit/{centre}', [\App\Http\Controllers\AdminController::class, 'editChurchCentre'])->name('edit-church-centre');
+Route::put('manage/centre-edit/{id}', [\App\Http\Controllers\AdminController::class, 'updateChurchCentre'])->name('update-church-centre');
 Route::post('store/subgroup', [App\Http\Controllers\AdminController::class, 'storeSubgroup']);
 Route::post('store/household', [App\Http\Controllers\AdminController::class, 'storeHousehold']);
 Route::get('visitation/list', [App\Http\Controllers\AdminController::class, 'viewVisitationList'])->name('visitation.list');
