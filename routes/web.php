@@ -55,6 +55,7 @@ Route::get('manage/centres', [\App\Http\Controllers\AdminController::class, 'cre
 Route::post('manage/centres', [\App\Http\Controllers\AdminController::class, 'storeChurchCentres'])->name('store-church-centres');
 Route::get('manage/centre-edit/{centre}', [\App\Http\Controllers\AdminController::class, 'editChurchCentre'])->name('edit-church-centre');
 Route::put('manage/centre-edit/{id}', [\App\Http\Controllers\AdminController::class, 'updateChurchCentre'])->name('update-church-centre');
+Route::get('manage/fetch-centres/{id}', [\App\Http\Controllers\AdminController::class, 'fetchChurchCentres'])->name('fetch-church-centres');
 Route::post('store/subgroup', [App\Http\Controllers\AdminController::class, 'storeSubgroup']);
 Route::post('store/household', [App\Http\Controllers\AdminController::class, 'storeHousehold']);
 Route::get('visitation/list', [App\Http\Controllers\AdminController::class, 'viewVisitationList'])->name('visitation.list');

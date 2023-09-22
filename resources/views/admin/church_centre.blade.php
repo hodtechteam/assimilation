@@ -26,12 +26,38 @@
           <!-- Dynamic Table with Export Buttons -->
 
 <div class="content">
-          <div class="row mb-3">
-            <div class="col-md-3">
-              {{-- <a href="{{ route('create-centres') }}" class="btn btn-success">New Church Centre</a> --}}
-              <a href="{{ route('create-church-centres') }}" class="btn btn-success"><i class="fa fa-plus"></i> New Church Centre</a>
+          <div class="row mb-1">
+            <div class="col-md-6">
+              {{-- <a href="{{ route('create-church-centres') }}" class="btn btn-success"><i class="fa fa-plus"></i> New Church Centre</a> --}}
+              <h5>Add Church Centre</h5>
             </div>
           </div>
+
+          <div class="col-md-12">
+            <form action="{{ route('store-church-centres') }}" method="POST">
+               @csrf 
+              <div class="row">
+                <div class="col-md-6">
+                  <input required type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Church Centre Name *" value="{{ old('name') }}">
+                    @error('name')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="mt-3 mb-3">
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                      </div>
+                  </div>
+              </div>
+  
+            </form>
+          </div>
+          <hr>
+          {{--  --}}
           <div class="block block-rounded">
             <div class="block-header block-header-default">
               <h3 class="block-title">All Church Centres - <small>@isset($centres)
@@ -64,7 +90,9 @@
                 <tbody>
                     @forelse ($centres as $centre)
                         <tr>
-                            <td>{{ $centre->name }}</td>
+                            <td>
+                              <a href="{{ route('fetch-church-centres', ['id' => $centre->id]) }}">{{ $centre->name }}</a>
+                            </td>
                             <td>{{ $centre->status }}</td>
                             <td><a href="{{ route('edit-church-centre', ['centre' => $centre]) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a></td>
                         </tr>
