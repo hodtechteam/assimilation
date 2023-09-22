@@ -22,12 +22,13 @@ class CardController extends Controller
     public function index()
     {
         $households = HouseholdLocation::orderBy('household_name', 'desc')->get();
-        return view('user.cards', ['households' => $households]);
+        $user = User::with('churchCentre')->where('id', auth()->id())->first();
+        $centre = $user->churchCentre->name;
+        return view('user.cards', ['households' => $households, 'centre' => $centre]);
     }
 
     public function userHome()
     {
-        // $user_id = auth()->id();
         $user = User::with('churchCentre')->where('id', auth()->id())->first();
         if($user->phone == '')
         {

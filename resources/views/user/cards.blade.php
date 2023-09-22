@@ -35,7 +35,7 @@
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Add Guest's Information</h4>
+                                        <h4 class="card-title">Add Guest's Information in {{ $centre }} Centre</h4>
                                         <hr>
                                         @if (session('success'))
 						                        <div class="alert alert-success">
