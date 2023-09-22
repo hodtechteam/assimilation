@@ -22,10 +22,10 @@ class AdminController extends Controller
         if(isset($request->start) && isset($request->end)) {
             // $year = Carbon::parse($request->month)->format('Y');
             // $month = Carbon::parse($request->month)->format('m');
-            $cards = Card::whereDate('date_added', '>=', $request->start)
+            $cards = Card::with('churchCentre')->whereDate('date_added', '>=', $request->start)
             ->whereDate('date_added', '<=', $request->end)->get();//whereYear('created_at', $year)->whereMonth('created_at', $month)->get();            
         }else{
-            $cards = Card::orderBy('id', 'desc')->orderBy('created_at', 'desc')->paginate(200);
+            $cards = Card::with('churchCentre')->orderBy('id', 'desc')->orderBy('created_at', 'desc')->paginate(200);
         }
         
         return view('admin.cardlist', ['cards' => $cards]);
@@ -33,13 +33,13 @@ class AdminController extends Controller
 
     public function contactedCards()
     {
-        $cards = Card::where('comment', '!=', null)->orderBy('created_at', 'desc')->get();
+        $cards = Card::with('churchCentre')->where('comment', '!=', null)->orderBy('created_at', 'desc')->get();
         return view('admin.contacted', ['cards' => $cards]);
     }
 
     public function visitedCards()
     {
-        $cards = Card::where('is_visited', true)->orderBy('created_at', 'desc')->get();
+        $cards = Card::with('churchCentre')->where('is_visited', true)->orderBy('created_at', 'desc')->get();
         return view('admin.visited', ['cards' => $cards]);
     }
 
@@ -76,7 +76,7 @@ class AdminController extends Controller
 
     public function uncontacted()
     {
-        $uncontacted = Card::where('comment', null)->get();
+        $uncontacted = Card::with('churchCentre')->where('comment', null)->get();
 
         return view('admin.uncontacted', ['uncontacted' => $uncontacted]);
     }
@@ -134,6 +134,14 @@ class AdminController extends Controller
         ]);
 
         return back()->with('success', 'Record update successful');
+    }
+
+    public function fetchChurchCentres($id)
+    {
+        $cards = Card::with(['churchCentre', 'user'])->where('church_Centre_id', $id)->get();
+        $centre = Card::with('churchCentre')->where('church_Centre_id', $id)->first();
+        $church_centre = $centre->churchCentre->name ?? '';
+        return view('admin.sort-centre', compact('cards', 'church_centre'));
     }
 
     public function storeSubgroup(Request $request)

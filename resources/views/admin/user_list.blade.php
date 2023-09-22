@@ -40,6 +40,7 @@
                     <th style="width: 30%;">Name</th>
                     <th class="d-none d-sm-table-cell" style="width: 25%;">Email</th>
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Phone</th>
+                    <th class="d-none d-sm-table-cell" style="width: 20%;">Role</th>
                     <th class="d-none d-sm-table-cell" style="width: 20%;">Unit</th>
                     <th style="width: 5%;">No. of Guest</th>
                     <th style="width: 5%;">No. of Contacted</th>
@@ -60,6 +61,9 @@
                             </td>
                             <td class="d-none d-sm-table-cell">
                               <em class="text-muted">{{ $card->phone }}</em>
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                              <em class="text-muted">{{ $card->role }}</em>
                             </td>
                             <td class="d-none d-sm-table-cell">
                               <em class="text-muted">{{ $card->unit }}</em>
