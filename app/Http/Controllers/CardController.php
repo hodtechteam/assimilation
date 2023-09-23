@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\GoogleApiLocation;
 use App\Models\Card;
+use App\Models\ChurchCentre;
 use App\Models\HouseholdLocation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -31,9 +32,10 @@ class CardController extends Controller
     {
         $user = User::with('churchCentre')->where('id', auth()->id())->first();
        
-        if($user->phone == '' || $user->church_centre_id == 0)
+        if($user->church_centre_id == 0)
         {
-            return view('user.phone');
+            $centres = ChurchCentre::where('status', 'Active')->get();
+            return view('user.phone', compact('centres'));
         }
         $guest = auth()->user()->myCards()->get();
         $centre = $user->churchCentre->name;
@@ -174,10 +176,12 @@ class CardController extends Controller
     {
         $request->validate([
             'phone' => 'required|numeric|digits:11',
+            'church_centre' => 'required',
         ]);
         $update = User::where('id', auth()->user()->id)->first();
         $update->phone = $request->phone;
         $update->unit = $request->unit;
+        $update->church_centre_id = $request->church_centre;
         $update->save();
         return back()->with('success', 'Information Updated Successfully');
     }
