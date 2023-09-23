@@ -30,7 +30,8 @@ class CardController extends Controller
     public function userHome()
     {
         $user = User::with('churchCentre')->where('id', auth()->id())->first();
-        if($user->phone == '')
+       
+        if($user->phone == '' || $user->church_centre_id == 0)
         {
             return view('user.phone');
         }
