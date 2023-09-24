@@ -65,7 +65,7 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-12 text-muted text-center small-xl">
-                &copy;  <?php date('Y') ?> Assimilation Ministry - All Rights Reserved
+                &copy;  <?= date('Y') ?> Household of David - All Rights Reserved
             </div>
         </div>
     </div>
