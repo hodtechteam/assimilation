@@ -60,6 +60,19 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom02">Select your church centre</label>
+                                                        <select name="church_centre" class="form-control @error('church_centre') is-invalid @enderror" required>
+                                                            <option value="">Select One</option>
+                                                            @isset($centres)
+                                                                @foreach ($centres as $centre)
+                                                                    <option value="{{ $centre->id }}">{{ $centre->name }}</option>
+                                                                @endforeach
+                                                            @endisset
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
                                                         <label class="form-label" for="validationCustom02">Select Unit</label>
                                                         <select name="unit" class="form-control @error('unit') is-invalid @enderror" required>
                                                             <option value="">Select One</option>
@@ -71,7 +84,7 @@
 
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <button class="btn btn-primary" type="submit">Update Phone Number</button>
+                                                        <button class="btn btn-primary" type="submit">Update User Record</button>
                                                     </div>
                                                 </div>
                                             </div>

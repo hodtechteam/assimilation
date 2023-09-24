@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'visitee_id',
-        'church_centre_id',
+        // 'church_centre_id',
     ];
 
     /**

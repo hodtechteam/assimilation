@@ -103,8 +103,12 @@
                                 <em class="text-muted">{{ $card->email }}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                  <em class="text-muted">{{ $card->churchCentre->name }}</em>
-                                  </td>
+                                  <em class="text-muted">
+                                    @isset($card->churchCentre->name)
+                                      {{ $card->churchCentre->name }}
+                                    @endisset
+                                  </em>
+                                </td>
                                 <td class="d-none d-sm-table-cell">
                                 <em class="text-muted">{{ $card->phone}}</em>
                                 </td>
